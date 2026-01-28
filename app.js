@@ -110,6 +110,7 @@ function createCard(article, position, index, spreadType) {
     card.dataset.position = index + 1;
 
     const articleUrl = `https://en.wikipedia.org/wiki/${encodeURIComponent(article.title)}`;
+    const mobileUrl = `https://en.m.wikipedia.org/wiki/${encodeURIComponent(article.title)}`;
 
     card.innerHTML = `
         <div class="card-inner">
@@ -132,7 +133,7 @@ function createCard(article, position, index, spreadType) {
     link.addEventListener('click', (e) => {
         e.preventDefault();
         e.stopPropagation();
-        openArticleViewer(article.title, articleUrl);
+        openArticleViewer(article.title, mobileUrl, articleUrl);
     });
 
     // Reveal card on click
@@ -310,10 +311,10 @@ const articleIframe = document.getElementById('article-iframe');
 const articleExternal = document.getElementById('article-external');
 const articleClose = document.getElementById('article-close');
 
-function openArticleViewer(title, url) {
+function openArticleViewer(title, iframeUrl, externalUrl) {
     articleTitle.textContent = title;
-    articleExternal.href = url;
-    articleIframe.src = url;
+    articleExternal.href = externalUrl;
+    articleIframe.src = iframeUrl;
     articleViewer.classList.remove('hidden');
     articleViewer.scrollIntoView({ behavior: 'smooth' });
 }
