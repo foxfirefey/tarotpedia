@@ -272,6 +272,19 @@ function saveSettings() {
     SPREADS.three.positions[2] = document.getElementById('three-2').value.trim() || DEFAULT_POSITIONS.three[2];
 
     saveCustomPositions();
+
+    // Update visible position labels if a spread is displayed
+    if (currentSpreadType === 'one' || currentSpreadType === 'three') {
+        const positions = SPREADS[currentSpreadType].positions;
+        const cards = cardDisplay.querySelectorAll('.tarot-card');
+        cards.forEach((card, index) => {
+            const backPosition = card.querySelector('.card-back-position');
+            const frontPosition = card.querySelector('.card-position');
+            if (backPosition) backPosition.textContent = positions[index];
+            if (frontPosition) frontPosition.textContent = positions[index];
+        });
+    }
+
     closeSettingsModal();
 }
 
