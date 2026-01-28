@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tarotpedia</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <button class="settings-btn" id="settings-btn" title="Customize position names">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="3"></circle>
+                <path d="M12 1v4M12 19v4M4.22 4.22l2.83 2.83M16.95 16.95l2.83 2.83M1 12h4M19 12h4M4.22 19.78l2.83-2.83M16.95 7.05l2.83-2.83"></path>
+            </svg>
+        </button>
+        <h1>Tarotpedia</h1>
+        <p class="tagline">Divination through esoterica</p>
+    </header>
+
+    <main>
+        <nav class="spread-selection">
+            <button class="spread-btn" data-spread="one">One Card</button>
+            <button class="spread-btn" data-spread="three">Three Card</button>
+            <button class="spread-btn" data-spread="celtic">Celtic Cross</button>
+        </nav>
+
+        <button id="draw-btn" class="draw-btn hidden">Draw</button>
+
+        <div id="settings-modal" class="modal hidden">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h2>Position Names</h2>
+                    <button class="modal-close" id="modal-close">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <div class="settings-section">
+                        <h3>One Card</h3>
+                        <div class="setting-row">
+                            <label for="one-0">Position:</label>
+                            <input type="text" id="one-0" data-spread="one" data-index="0">
+                        </div>
+                    </div>
+                    <div class="settings-section">
+                        <h3>Three Card</h3>
+                        <div class="setting-row">
+                            <label for="three-0">Position 1:</label>
+                            <input type="text" id="three-0" data-spread="three" data-index="0">
+                        </div>
+                        <div class="setting-row">
+                            <label for="three-1">Position 2:</label>
+                            <input type="text" id="three-1" data-spread="three" data-index="1">
+                        </div>
+                        <div class="setting-row">
+                            <label for="three-2">Position 3:</label>
+                            <input type="text" id="three-2" data-spread="three" data-index="2">
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn-reset" id="reset-defaults">Reset to Defaults</button>
+                    <button class="btn-save" id="save-settings">Save</button>
+                </div>
+            </div>
+        </div>
+
+        <div id="loading" class="loading hidden">
+            <div class="loading-spinner"></div>
+            <p>Drawing articles...</p>
+        </div>
+
+        <div id="card-display" class="card-display"></div>
+
+        <div id="article-viewer" class="article-viewer hidden">
+            <div class="article-header">
+                <span id="article-title" class="article-title"></span>
+                <div class="article-actions">
+                    <a id="article-external" href="#" target="_blank" rel="noopener noreferrer" class="article-external-link" title="Open in new tab">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+                            <polyline points="15 3 21 3 21 9"></polyline>
+                            <line x1="10" y1="14" x2="21" y2="3"></line>
+                        </svg>
+                    </a>
+                    <button id="article-close" class="article-close" title="Close">&times;</button>
+                </div>
+            </div>
+            <iframe id="article-iframe" class="article-iframe"></iframe>
+        </div>
+    </main>
+
+    <footer>
+        <p>Because 78 cards wasn't enough.</p>
+    </footer>
+
+    <script src="app.js"></script>
+</body>
+</html>
