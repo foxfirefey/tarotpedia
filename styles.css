@@ -175,7 +175,7 @@ main {
 /* Celtic Cross Layout */
 .card-display.celtic-cross {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: 1fr 1.5fr 1fr 1fr;
     grid-template-rows: repeat(4, auto);
     gap: 1rem;
     max-width: 900px;
@@ -483,6 +483,7 @@ main {
 .celtic-cross .tarot-card[data-position="2"] {
     grid-column: 2;
     grid-row: 2;
+    justify-self: center;
 }
 
 .celtic-cross .tarot-card[data-position="1"] {
@@ -503,11 +504,13 @@ main {
 .celtic-cross .tarot-card[data-position="3"] {
     grid-column: 2;
     grid-row: 1;
+    justify-self: center;
 }
 
 .celtic-cross .tarot-card[data-position="4"] {
     grid-column: 2;
     grid-row: 3;
+    justify-self: center;
 }
 
 .celtic-cross .tarot-card[data-position="5"] {
