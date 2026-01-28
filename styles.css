@@ -485,9 +485,19 @@ main {
     grid-row: 2;
 }
 
-.celtic-cross .tarot-card[data-position="2"] {
-    transform: rotate(90deg);
+.celtic-cross .tarot-card[data-position="1"] {
+    transform: translateY(-20px);
     z-index: 1;
+}
+
+.celtic-cross .tarot-card[data-position="2"] {
+    transform: rotate(90deg) translateY(20px);
+    z-index: 2;
+}
+
+.celtic-cross .tarot-card[data-position="1"]:hover,
+.celtic-cross .tarot-card[data-position="1"].revealed:hover {
+    z-index: 3;
 }
 
 .celtic-cross .tarot-card[data-position="3"] {
@@ -503,6 +513,7 @@ main {
 .celtic-cross .tarot-card[data-position="5"] {
     grid-column: 1;
     grid-row: 2;
+    transform: translateX(-20px);
 }
 
 .celtic-cross .tarot-card[data-position="6"] {
@@ -655,8 +666,20 @@ footer {
         height: 120px;
     }
 
-    .celtic-cross .card-position {
-        font-size: 0.5rem;
+    .celtic-cross .card-position,
+    .celtic-cross .card-back-position {
+        font-size: 0.45rem;
+        padding: 0;
+        margin-bottom: 0.2rem;
+        padding-bottom: 0.2rem;
+    }
+
+    .celtic-cross .card-back {
+        padding: 0.4rem;
+    }
+
+    .celtic-cross .card-front {
+        padding: 0.4rem;
     }
 
     .celtic-cross .card-title {
