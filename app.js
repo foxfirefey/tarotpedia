@@ -1,3 +1,17 @@
+// Language configuration
+const LANGUAGES = {
+    en: { name: 'English', domain: 'en.wikipedia.org' },
+    simple: { name: 'Simple English', domain: 'simple.wikipedia.org' },
+    es: { name: 'Spanish', domain: 'es.wikipedia.org' },
+    de: { name: 'German', domain: 'de.wikipedia.org' },
+    fr: { name: 'French', domain: 'fr.wikipedia.org' },
+    ja: { name: 'Japanese', domain: 'ja.wikipedia.org' },
+    pt: { name: 'Portuguese', domain: 'pt.wikipedia.org' }
+};
+
+const DEFAULT_LANGUAGE = 'en';
+let currentLanguage = DEFAULT_LANGUAGE;
+
 // Default spread configurations
 const DEFAULT_POSITIONS = {
     one: ['The Answer'],
@@ -33,6 +47,19 @@ const SPREADS = {
     }
 };
 
+// Load language preference from localStorage
+function loadLanguagePreference() {
+    const saved = localStorage.getItem('wikitarot-language');
+    if (saved && LANGUAGES[saved]) {
+        currentLanguage = saved;
+    }
+}
+
+// Save language preference to localStorage
+function saveLanguagePreference() {
+    localStorage.setItem('wikitarot-language', currentLanguage);
+}
+
 // Load custom positions from localStorage
 function loadCustomPositions() {
     const saved = localStorage.getItem('wikitarot-positions');
@@ -52,7 +79,8 @@ function saveCustomPositions() {
     localStorage.setItem('wikitarot-positions', JSON.stringify(custom));
 }
 
-// Initialize custom positions on load
+// Initialize custom positions and language on load
+loadLanguagePreference();
 loadCustomPositions();
 
 // DOM Elements
@@ -66,7 +94,8 @@ let currentSpreadType = null;
 
 // Fetch random Wikipedia articles
 async function fetchRandomArticles(count) {
-    const url = `https://en.wikipedia.org/w/api.php?action=query&list=random&rnnamespace=0&rnlimit=${count}&format=json&origin=*`;
+    const domain = LANGUAGES[currentLanguage].domain;
+    const url = `https://${domain}/w/api.php?action=query&list=random&rnnamespace=0&rnlimit=${count}&format=json&origin=*`;
 
     const response = await fetch(url);
 
@@ -109,8 +138,10 @@ function createCard(article, position, index, spreadType) {
     card.className = 'tarot-card';
     card.dataset.position = index + 1;
 
-    const articleUrl = `https://en.wikipedia.org/wiki/${encodeURIComponent(article.title)}`;
-    const mobileUrl = `https://en.m.wikipedia.org/wiki/${encodeURIComponent(article.title)}`;
+    const domain = LANGUAGES[currentLanguage].domain;
+    const mobileDomain = domain.replace('wikipedia.org', 'm.wikipedia.org');
+    const articleUrl = `https://${domain}/wiki/${encodeURIComponent(article.title)}`;
+    const mobileUrl = `https://${mobileDomain}/wiki/${encodeURIComponent(article.title)}`;
 
     card.innerHTML = `
         <div class="card-inner">
@@ -257,6 +288,7 @@ function openSettingsModal() {
     document.getElementById('three-0').value = SPREADS.three.positions[0];
     document.getElementById('three-1').value = SPREADS.three.positions[1];
     document.getElementById('three-2').value = SPREADS.three.positions[2];
+    document.getElementById('language-select').value = currentLanguage;
 
     settingsModal.classList.remove('hidden');
 }
@@ -271,7 +303,10 @@ function saveSettings() {
     SPREADS.three.positions[1] = document.getElementById('three-1').value.trim() || DEFAULT_POSITIONS.three[1];
     SPREADS.three.positions[2] = document.getElementById('three-2').value.trim() || DEFAULT_POSITIONS.three[2];
 
+    currentLanguage = document.getElementById('language-select').value;
+
     saveCustomPositions();
+    saveLanguagePreference();
 
     // Update visible position labels if a spread is displayed
     if (currentSpreadType === 'one' || currentSpreadType === 'three') {
@@ -293,6 +328,7 @@ function resetToDefaults() {
     document.getElementById('three-0').value = DEFAULT_POSITIONS.three[0];
     document.getElementById('three-1').value = DEFAULT_POSITIONS.three[1];
     document.getElementById('three-2').value = DEFAULT_POSITIONS.three[2];
+    document.getElementById('language-select').value = DEFAULT_LANGUAGE;
 }
 
 settingsBtn.addEventListener('click', openSettingsModal);
