@@ -297,8 +297,8 @@ function updateUILanguage() {
     document.querySelector('[data-spread="celtic"]').textContent = t.celticCross;
     
     // Update draw button
-    document.getElementById('draw-btn').textContent = t.draw;
-    
+    document.querySelector('#draw-btn .draw-text').textContent = t.draw;
+
     // Update settings modal
     document.querySelector('.modal-header h2').textContent = t.settingsTitle;
     document.querySelector('.settings-section h3').textContent = t.wikiLanguage;
@@ -315,9 +315,6 @@ function updateUILanguage() {
     // Update buttons
     document.getElementById('reset-defaults').textContent = t.resetDefaults;
     document.getElementById('save-settings').textContent = t.save;
-    
-    // Update loading text
-    document.querySelector('.loading p').textContent = t.drawingArticles;
     
     // Update tooltips
     document.getElementById('settings-btn').title = t.settingsTooltip;
@@ -368,7 +365,6 @@ updateUILanguage();
 
 // DOM Elements
 const cardDisplay = document.getElementById('card-display');
-const loading = document.getElementById('loading');
 const spreadButtons = document.querySelectorAll('.spread-btn');
 const drawBtn = document.getElementById('draw-btn');
 
@@ -484,7 +480,7 @@ function renderUndrawnSpread(type) {
 }
 
 // Render the spread with articles
-function renderSpread(type, articles) {
+function renderSpread(type, articles, onComplete) {
     const spread = SPREADS[type];
 
     // Clear previous cards
@@ -497,8 +493,13 @@ function renderSpread(type, articles) {
         cardDisplay.appendChild(card);
 
         // Auto-reveal cards with staggered timing
+        const isLast = index === articles.length - 1;
         setTimeout(() => {
             card.classList.add('revealed');
+            if (isLast && onComplete) {
+                // Wait for the flip transition (0.8s) to finish before calling back
+                setTimeout(onComplete, 800);
+            }
         }, 500 + (index * 300));
     });
 }
@@ -513,7 +514,6 @@ function showError(message) {
         </div>
     `;
     cardDisplay.className = 'card-display';
-    drawBtn.classList.add('hidden');
 }
 
 // Handle spread selection (show undrawn cards)
@@ -533,9 +533,9 @@ function handleSpreadSelection(spreadType) {
         if (iframe) iframe.src = '';
     }
 
-    // Show undrawn cards and draw button
+    // Show undrawn cards and draw button (reset to default state)
     renderUndrawnSpread(spreadType);
-    drawBtn.classList.remove('hidden');
+    drawBtn.classList.remove('hidden', 'loading', 'drawn');
 }
 
 // Handle draw button click
@@ -544,17 +544,19 @@ async function handleDraw() {
 
     const spread = SPREADS[currentSpreadType];
 
-    // Hide draw button and show loading
-    drawBtn.classList.add('hidden');
-    loading.classList.remove('hidden');
+    // Show loading state on button
+    drawBtn.classList.add('loading');
+    drawBtn.classList.remove('drawn');
 
     try {
         const articles = await fetchRandomArticles(spread.count);
-        loading.classList.add('hidden');
-        renderSpread(currentSpreadType, articles);
+        renderSpread(currentSpreadType, articles, () => {
+            drawBtn.classList.remove('loading');
+            drawBtn.classList.add('drawn');
+        });
     } catch (error) {
         console.error('Error fetching articles:', error);
-        loading.classList.add('hidden');
+        drawBtn.classList.remove('loading');
         showError();
     }
 }
