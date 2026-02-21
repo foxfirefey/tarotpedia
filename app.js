@@ -1,5 +1,7 @@
 // LANGUAGES, DEFAULT_LANGUAGE, TRANSLATIONS are defined in lang.js
 
+const APP_VERSION = 'dev';
+
 // Spread configurations — positions are { name } objects
 const SPREADS = {
     one: {
@@ -838,7 +840,8 @@ function handleShare() {
         spread:   currentSpreadType,
         lang:     currentLanguage,
         ui:       uiLanguage,
-        articles: currentArticles.map(a => a.title).join('|')
+        articles: currentArticles.map(a => a.title).join('|'),
+        v:        APP_VERSION
     });
 
     const spread = getSpreadById(currentSpreadType);
