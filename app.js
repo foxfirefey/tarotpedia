@@ -37,11 +37,12 @@ const SPREADS = {
 };
 
 // State
-let currentLanguage = DEFAULT_LANGUAGE; // Wikipedia article language
-let uiLanguage      = DEFAULT_LANGUAGE; // Interface / position-name language
-let currentSpreadType = null;
-let currentArticles   = null;
-let userSpreads       = [];
+let currentLanguage    = DEFAULT_LANGUAGE; // Wikipedia article language
+let uiLanguage         = DEFAULT_LANGUAGE; // Interface / position-name language
+let showDisambiguation = false;            // Whether to include disambiguation pages
+let currentSpreadType  = null;
+let currentArticles    = null;
+let userSpreads        = [];
 
 // ---- Utility ----
 
@@ -95,6 +96,14 @@ function loadUILanguagePreference() {
 
 function saveUILanguagePreference() {
     localStorage.setItem('wikitarot-ui-language', uiLanguage);
+}
+
+function loadDisambiguationPreference() {
+    showDisambiguation = localStorage.getItem('wikitarot-disambiguation') === 'true';
+}
+
+function saveDisambiguationPreference() {
+    localStorage.setItem('wikitarot-disambiguation', showDisambiguation);
 }
 
 function loadUserSpreads() {
@@ -152,9 +161,11 @@ function updateUILanguage() {
     document.querySelector('.tagline').textContent                                = tr.tagline;
     document.querySelector('#draw-btn .draw-text').textContent                   = tr.draw;
     document.querySelector('.modal-header h2').textContent                       = tr.settingsTitle;
-    document.querySelector('.settings-section h3').textContent                   = tr.languageSection;
+    document.getElementById('section-language').textContent                      = tr.languageSection;
     document.querySelector('label[for="ui-language-select"]').textContent        = tr.interfaceLanguage;
     document.querySelector('label[for="language-select"]').textContent           = tr.articleLanguage;
+    document.getElementById('section-articles').textContent                      = tr.articlesSection;
+    document.querySelector('label[for="disambiguation-toggle"]').textContent     = tr.disambigLabel;
     document.getElementById('save-settings').textContent                         = tr.save;
     document.getElementById('reset-language').textContent                        = tr.resetDefaults;
     document.getElementById('settings-btn').title                                = tr.settingsTooltip;
@@ -355,10 +366,12 @@ async function fetchRandomArticles(count) {
         const url      = `https://${domain}/w/api.php?action=query&generator=random&grnnamespace=0&grnlimit=${limit}&prop=pageprops&ppprop=disambiguation&format=json&origin=*`;
         const response = await fetch(url);
         if (!response.ok) throw new Error('Failed to fetch from Wikipedia API');
-        const data        = await response.json();
-        const pages       = Object.values(data.query.pages);
-        const nonDisambig = pages.filter(p => !p.pageprops || !('disambiguation' in p.pageprops));
-        articles.push(...nonDisambig);
+        const data  = await response.json();
+        const pages = Object.values(data.query.pages);
+        const batch = showDisambiguation
+            ? pages
+            : pages.filter(p => !p.pageprops || !('disambiguation' in p.pageprops));
+        articles.push(...batch);
     }
     return articles.slice(0, count);
 }
@@ -420,8 +433,9 @@ document.getElementById('draw-btn').addEventListener('click', handleDraw);
 // ---- Settings modal ----
 
 function openSettingsModal() {
-    document.getElementById('ui-language-select').value = uiLanguage;
-    document.getElementById('language-select').value    = currentLanguage;
+    document.getElementById('ui-language-select').value      = uiLanguage;
+    document.getElementById('language-select').value         = currentLanguage;
+    document.getElementById('disambiguation-toggle').checked = showDisambiguation;
     switchSettingsTab('settings');
     document.getElementById('settings-modal').classList.remove('hidden');
 }
@@ -443,10 +457,12 @@ function switchSettingsTab(tabName) {
 
 function saveSettings() {
     const prevUI      = uiLanguage;
-    uiLanguage      = document.getElementById('ui-language-select').value;
-    currentLanguage = document.getElementById('language-select').value;
+    uiLanguage         = document.getElementById('ui-language-select').value;
+    currentLanguage    = document.getElementById('language-select').value;
+    showDisambiguation = document.getElementById('disambiguation-toggle').checked;
     saveUILanguagePreference();
     saveLanguagePreference();
+    saveDisambiguationPreference();
 
     if (prevUI !== uiLanguage) {
         updateUILanguage();
@@ -456,8 +472,9 @@ function saveSettings() {
 }
 
 function resetLanguage() {
-    document.getElementById('ui-language-select').value = DEFAULT_LANGUAGE;
-    document.getElementById('language-select').value    = DEFAULT_LANGUAGE;
+    document.getElementById('ui-language-select').value      = DEFAULT_LANGUAGE;
+    document.getElementById('language-select').value         = DEFAULT_LANGUAGE;
+    document.getElementById('disambiguation-toggle').checked = false;
 }
 
 document.getElementById('settings-btn').addEventListener('click', openSettingsModal);
@@ -790,6 +807,7 @@ document.getElementById('article-close').addEventListener('click', closeArticleV
 // ---- Init sequence ----
 loadLanguagePreference();
 loadUILanguagePreference();
+loadDisambiguationPreference();
 loadUserSpreads();
 migrateAndLoadPositions();
 updateUILanguage();

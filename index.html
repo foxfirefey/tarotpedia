@@ -22,7 +22,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="styles.css?v=cc0c605">
+    <link rel="stylesheet" href="styles.css?v=732bb6e">
 </head>
 <body>
     <header>
@@ -74,7 +74,7 @@
                 </div>
                 <div class="modal-body tab-panel" id="tab-settings">
                     <div class="settings-section">
-                        <h3>Language</h3>
+                        <h3 id="section-language">Language</h3>
                         <div class="setting-row">
                             <label for="ui-language-select">Interface:</label>
                             <select id="ui-language-select" class="language-select">
@@ -98,6 +98,13 @@
                                 <option value="ja">Japanese</option>
                                 <option value="pt">Portuguese</option>
                             </select>
+                        </div>
+                    </div>
+                    <div class="settings-section">
+                        <h3 id="section-articles">Articles</h3>
+                        <div class="setting-row">
+                            <label for="disambiguation-toggle">Include disambiguation pages</label>
+                            <input type="checkbox" id="disambiguation-toggle">
                         </div>
                     </div>
                 </div>
@@ -140,7 +147,7 @@
         <p>Because 78 cards wasn't enough.</p>
     </footer>
 
-    <script src="lang.js?v=cc0c605"></script>
-    <script src="app.js?v=cc0c605"></script>
+    <script src="lang.js?v=732bb6e"></script>
+    <script src="app.js?v=732bb6e"></script>
 </body>
 </html>
