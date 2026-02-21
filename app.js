@@ -181,9 +181,11 @@ function updateUILanguage() {
     if (tabSettings) tabSettings.textContent = tr.settingsTab;
     if (tabSpreads)  tabSpreads.textContent  = tr.spreadsTab;
 
-    // Share button tooltip
-    const shareBtn = document.getElementById('share-btn');
-    if (shareBtn) shareBtn.title = tr.shareTooltip;
+    // Action button tooltips
+    const shareBtn    = document.getElementById('share-btn');
+    const downloadBtn = document.getElementById('download-btn');
+    if (shareBtn)    shareBtn.title    = tr.shareTooltip;
+    if (downloadBtn) downloadBtn.title = tr.downloadTooltip;
 
     // Reading modal
     document.getElementById('reading-btn').title                                    = tr.readingBtnTooltip;
@@ -858,27 +860,21 @@ function handleShare() {
 
 document.getElementById('share-btn').addEventListener('click', handleShare);
 
-function handleDownload() {
-    if (!currentArticles || !currentSpreadType) return;
+function buildExportRows() {
     const spread = getSpreadById(currentSpreadType);
-    if (!spread) return;
-
     const domain = LANGUAGES[currentLanguage].domain;
-    const q = f => `"${String(f).replace(/"/g, '""')}"`;
+    const spreadName = getSpreadDisplayName(spread);
+    const title = currentReading ? `${spreadName}: ${currentReading}` : spreadName;
+    const rows = currentArticles.map((article, i) => ({
+        num:     String(i + 1),
+        posName: spread.positions[i]?.name || '',
+        article: article.title,
+        url:     `https://${domain}/wiki/${encodeURIComponent(article.title)}`
+    }));
+    return { title, rows, spread };
+}
 
-    const hasTopic = !!currentReading;
-    const header = [q('Topic'),
-        ...(hasTopic ? [] : []),
-        q('Position'), q('Position Name'), q('Article'), q('Link')].join(',');
-    const dataRows = currentArticles.map((article, i) => {
-        const posName = spread.positions[i]?.name || '';
-        const url = `https://${domain}/wiki/${encodeURIComponent(article.title)}`;
-        return [
-            ...(hasTopic ? [i === 0 ? q(currentReading) : q('')] : []),
-            q(i + 1), q(posName), q(article.title), q(url)
-        ].join(',');
-    });
-
+function buildDefaultFilename(spread) {
     const spreadSlug = getSpreadDisplayName(spread)
         .toLowerCase()
         .replace(/[^a-z0-9]+/g, '_')
@@ -891,17 +887,73 @@ function handleDownload() {
         + String(now.getHours()).padStart(2, '0')
         + String(now.getMinutes()).padStart(2, '0')
         + String(now.getSeconds()).padStart(2, '0');
+    return `tarotpedia-${spreadSlug}-${ts}`;
+}
 
-    const csv  = [header, ...dataRows].join('\n');
-    const blob = new Blob([csv], { type: 'text/csv' });
+function triggerDownload(content, mimeType, ext) {
+    const stem = document.getElementById('download-filename').value.trim() || 'tarotpedia';
+    const blob = new Blob([content], { type: mimeType });
     const a    = document.createElement('a');
     a.href     = URL.createObjectURL(blob);
-    a.download = `tarotpedia-${spreadSlug}-${ts}.csv`;
+    a.download = `${stem}.${ext}`;
     a.click();
     URL.revokeObjectURL(a.href);
+    document.getElementById('download-modal').classList.add('hidden');
+}
+
+function downloadCSV() {
+    const { title, rows } = buildExportRows();
+    const q = f => `"${String(f).replace(/"/g, '""')}"`;
+    const lines = [
+        q(title),
+        [q('#'), q('Position'), q('Article'), q('URL')].join(','),
+        ...rows.map(r => [q(r.num), q(r.posName), q(r.article), q(r.url)].join(','))
+    ];
+    triggerDownload(lines.join('\n'), 'text/csv', 'csv');
+}
+
+function downloadTSV() {
+    const { title, rows } = buildExportRows();
+    const clean = f => String(f).replace(/\t/g, ' ');
+    const lines = [
+        clean(title),
+        ['#', 'Position', 'Article', 'URL'].map(clean).join('\t'),
+        ...rows.map(r => [clean(r.num), clean(r.posName), clean(r.article), clean(r.url)].join('\t'))
+    ];
+    triggerDownload(lines.join('\n'), 'text/tab-separated-values', 'tsv');
+}
+
+function downloadMarkdown() {
+    const { title, rows } = buildExportRows();
+    const esc = f => String(f).replace(/[|\\]/g, '\\$&');
+    const lines = [
+        `# ${title}`,
+        '',
+        '| # | Position | Article |',
+        '|---|----------|---------|',
+        ...rows.map(r => `| ${esc(r.num)} | ${esc(r.posName)} | [${esc(r.article)}](${r.url}) |`)
+    ];
+    triggerDownload(lines.join('\n'), 'text/markdown', 'md');
+}
+
+function handleDownload() {
+    if (!currentArticles || !currentSpreadType) return;
+    const tr     = t();
+    const spread = getSpreadById(currentSpreadType);
+    document.getElementById('download-modal-title').textContent    = tr.downloadTitle;
+    document.getElementById('download-cancel').textContent         = tr.close;
+    document.getElementById('download-filename-label').textContent = tr.downloadFilenameLabel;
+    document.getElementById('download-filename').value             = buildDefaultFilename(spread);
+    document.getElementById('download-modal').classList.remove('hidden');
 }
 
 document.getElementById('download-btn').addEventListener('click', handleDownload);
+document.getElementById('download-csv').addEventListener('click', downloadCSV);
+document.getElementById('download-tsv').addEventListener('click', downloadTSV);
+document.getElementById('download-md').addEventListener('click', downloadMarkdown);
+document.getElementById('download-cancel').addEventListener('click', () => {
+    document.getElementById('download-modal').classList.add('hidden');
+});
 
 function checkURLParams() {
     const params          = new URLSearchParams(window.location.search);

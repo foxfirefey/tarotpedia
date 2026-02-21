@@ -513,6 +513,43 @@ main {
     overflow-y: auto;
 }
 
+.download-filename-row {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-bottom: 1rem;
+}
+
+.download-filename-row label {
+    color: #c0a0c0;
+    font-size: 0.85rem;
+    white-space: nowrap;
+}
+
+.download-filename-row input {
+    flex: 1;
+    background: rgba(0, 0, 0, 0.5);
+    border: 1px solid rgba(224, 86, 160, 0.5);
+    color: #e8e8e8;
+    padding: 0.5rem 0.75rem;
+    font-size: 0.9rem;
+    font-family: inherit;
+    border-radius: 6px;
+    outline: none;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.download-filename-row input:focus {
+    border-color: #e056a0;
+    box-shadow: 0 0 0 2px rgba(224, 86, 160, 0.2);
+}
+
+.download-format-body {
+    display: flex;
+    gap: 0.75rem;
+    justify-content: center;
+}
+
 .tab-panel.hidden {
     display: none;
 }

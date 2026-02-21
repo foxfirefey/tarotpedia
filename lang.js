@@ -54,6 +54,9 @@ const TRANSLATIONS = {
         sharedLinkMessage:   'You have been linked to a spread someone else made. Do you want to see it?',
         sharedLinkYes:       'Yes',
         sharedLinkNo:        'No',
+        downloadTitle:       'Download Spread',
+        downloadTooltip:     'Download spread',
+        downloadFilenameLabel: 'Filename',
         defaultPositions: {
             one:    'The Answer',
             three:  ['Past', 'Present', 'Future'],
@@ -105,6 +108,9 @@ const TRANSLATIONS = {
         sharedLinkMessage:   'Someone shared a spread with you. Do you want to see it?',
         sharedLinkYes:       'Yes',
         sharedLinkNo:        'No',
+        downloadTitle:       'Download Spread',
+        downloadTooltip:     'Download spread',
+        downloadFilenameLabel: 'Filename',
         defaultPositions: {
             one:    'The Answer',
             three:  ['Past', 'Present', 'Future'],
@@ -155,6 +161,9 @@ const TRANSLATIONS = {
         sharedLinkMessage:   'Alguien ha compartido una tirada contigo. ¿Quieres verla?',
         sharedLinkYes:       'Sí',
         sharedLinkNo:        'No',
+        downloadTitle:       'Descargar tirada',
+        downloadTooltip:     'Descargar tirada',
+        downloadFilenameLabel: 'Nombre de archivo',
         defaultPositions: {
             one:    'La Respuesta',
             three:  ['Pasado', 'Presente', 'Futuro'],
@@ -206,6 +215,9 @@ const TRANSLATIONS = {
         sharedLinkMessage:   'Jemand hat eine Legung mit dir geteilt. Möchtest du sie sehen?',
         sharedLinkYes:       'Ja',
         sharedLinkNo:        'Nein',
+        downloadTitle:       'Legung herunterladen',
+        downloadTooltip:     'Legung herunterladen',
+        downloadFilenameLabel: 'Dateiname',
         defaultPositions: {
             one:    'Die Antwort',
             three:  ['Vergangenheit', 'Gegenwart', 'Zukunft'],
@@ -257,6 +269,9 @@ const TRANSLATIONS = {
         sharedLinkMessage:   'Quelqu\'un vous a partagé un tirage. Voulez-vous le voir\u00a0?',
         sharedLinkYes:       'Oui',
         sharedLinkNo:        'Non',
+        downloadTitle:       'Télécharger le tirage',
+        downloadTooltip:     'Télécharger le tirage',
+        downloadFilenameLabel: 'Nom de fichier',
         defaultPositions: {
             one:    'La Réponse',
             three:  ['Passé', 'Présent', 'Futur'],
@@ -308,6 +323,9 @@ const TRANSLATIONS = {
         sharedLinkMessage:   '誰かがスプレッドを共有しました。表示しますか？',
         sharedLinkYes:       'はい',
         sharedLinkNo:        'いいえ',
+        downloadTitle:       'スプレッドをダウンロード',
+        downloadTooltip:     'スプレッドをダウンロード',
+        downloadFilenameLabel: 'ファイル名',
         defaultPositions: {
             one:    '答え',
             three:  ['過去', '現在', '未来'],
@@ -358,6 +376,9 @@ const TRANSLATIONS = {
         sharedLinkMessage:   'Alguém compartilhou uma tiragem com você. Deseja vê-la?',
         sharedLinkYes:       'Sim',
         sharedLinkNo:        'Não',
+        downloadTitle:       'Baixar tiragem',
+        downloadTooltip:     'Baixar tiragem',
+        downloadFilenameLabel: 'Nome do arquivo',
         defaultPositions: {
             one:    'A Resposta',
             three:  ['Passado', 'Presente', 'Futuro'],
