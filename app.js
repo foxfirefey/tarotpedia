@@ -375,19 +375,28 @@ const drawBtn = document.getElementById('draw-btn');
 // Current state
 let currentSpreadType = null;
 
-// Fetch random Wikipedia articles
+// Fetch random Wikipedia articles, skipping disambiguation pages
 async function fetchRandomArticles(count) {
     const domain = LANGUAGES[currentLanguage].domain;
-    const url = `https://${domain}/w/api.php?action=query&list=random&rnnamespace=0&rnlimit=${count}&format=json&origin=*`;
+    const articles = [];
 
-    const response = await fetch(url);
+    while (articles.length < count) {
+        const limit = (count - articles.length) + 5;
+        const url = `https://${domain}/w/api.php?action=query&generator=random&grnnamespace=0&grnlimit=${limit}&prop=pageprops&ppprop=disambiguation&format=json&origin=*`;
 
-    if (!response.ok) {
-        throw new Error('Failed to fetch from Wikipedia API');
+        const response = await fetch(url);
+
+        if (!response.ok) {
+            throw new Error('Failed to fetch from Wikipedia API');
+        }
+
+        const data = await response.json();
+        const pages = Object.values(data.query.pages);
+        const nonDisambig = pages.filter(page => !page.pageprops || !('disambiguation' in page.pageprops));
+        articles.push(...nonDisambig);
     }
 
-    const data = await response.json();
-    return data.query.random;
+    return articles.slice(0, count);
 }
 
 // Create an undrawn card (face down with position label)
