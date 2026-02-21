@@ -1012,6 +1012,9 @@ function closeArticleViewer() {
 document.getElementById('article-close').addEventListener('click', closeArticleViewer);
 
 // ---- Init sequence ----
+if (window.location.protocol === 'file:') {
+    document.getElementById('share-btn').style.display = 'none';
+}
 loadLanguagePreference();
 loadUILanguagePreference();
 loadDisambiguationPreference();
