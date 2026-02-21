@@ -42,6 +42,7 @@ let uiLanguage         = DEFAULT_LANGUAGE; // Interface / position-name language
 let showDisambiguation = false;            // Whether to include disambiguation pages
 let currentSpreadType  = null;
 let currentArticles    = null;
+let currentReading    = '';
 let userSpreads        = [];
 let fetchPromise       = null;             // Shared fetch promise; null means not yet started
 
@@ -183,6 +184,12 @@ function updateUILanguage() {
     // Share button tooltip
     const shareBtn = document.getElementById('share-btn');
     if (shareBtn) shareBtn.title = tr.shareTooltip;
+
+    // Reading modal
+    document.getElementById('reading-btn').title                                    = tr.readingBtnTooltip;
+    document.querySelector('#reading-modal .modal-header h2').textContent           = tr.readingTitle;
+document.getElementById('reading-save').textContent                             = tr.readingSave;
+    document.getElementById('reading-clear').textContent                            = tr.readingClear;
 
     // Dropdown option labels for default spreads
     document.querySelector('#optgroup-default option[value="one"]').textContent    = tr.oneCard;
@@ -602,6 +609,7 @@ document.getElementById('settings-modal').addEventListener('click', e => {
 
 document.addEventListener('keydown', e => {
     if (e.key === 'Escape' && !document.getElementById('settings-modal').classList.contains('hidden')) closeSettingsModal();
+    if (e.key === 'Escape' && !document.getElementById('reading-modal').classList.contains('hidden'))  closeReadingModal();
     if (e.key === 'Escape' && !document.getElementById('article-viewer').classList.contains('hidden'))  closeArticleViewer();
 });
 
@@ -858,11 +866,17 @@ function handleDownload() {
     const domain = LANGUAGES[currentLanguage].domain;
     const q = f => `"${String(f).replace(/"/g, '""')}"`;
 
-    const header = [q('Position'), q('Position Name'), q('Article'), q('Link')].join(',');
+    const hasTopic = !!currentReading;
+    const header = [q('Topic'),
+        ...(hasTopic ? [] : []),
+        q('Position'), q('Position Name'), q('Article'), q('Link')].join(',');
     const dataRows = currentArticles.map((article, i) => {
         const posName = spread.positions[i]?.name || '';
         const url = `https://${domain}/wiki/${encodeURIComponent(article.title)}`;
-        return [q(i + 1), q(posName), q(article.title), q(url)].join(',');
+        return [
+            ...(hasTopic ? [i === 0 ? q(currentReading) : q('')] : []),
+            q(i + 1), q(posName), q(article.title), q(url)
+        ].join(',');
     });
 
     const spreadSlug = getSpreadDisplayName(spread)
@@ -930,6 +944,54 @@ function checkURLParams() {
     renderSpreadRevealed(spreadId, articles);
     history.replaceState(null, '', window.location.pathname);
 }
+
+// ---- Reading modal ----
+
+function renderReadingDisplay() {
+    const display = document.getElementById('reading-display');
+    const text    = document.getElementById('reading-text');
+    const btn     = document.getElementById('reading-btn');
+    if (currentReading) {
+        text.textContent = currentReading;
+        display.classList.remove('hidden');
+        btn.classList.add('active');
+    } else {
+        display.classList.add('hidden');
+        btn.classList.remove('active');
+    }
+}
+
+function openReadingModal() {
+    document.getElementById('reading-input').value = currentReading;
+    document.getElementById('reading-modal').classList.remove('hidden');
+    document.getElementById('reading-input').focus();
+}
+
+function closeReadingModal() {
+    document.getElementById('reading-modal').classList.add('hidden');
+}
+
+function saveReading() {
+    currentReading = document.getElementById('reading-input').value.trim();
+    renderReadingDisplay();
+    closeReadingModal();
+}
+
+function clearReading() {
+    document.getElementById('reading-input').value = '';
+    currentReading = '';
+    renderReadingDisplay();
+    closeReadingModal();
+}
+
+document.getElementById('reading-btn').addEventListener('click', openReadingModal);
+document.getElementById('reading-modal-close').addEventListener('click', closeReadingModal);
+document.getElementById('reading-save').addEventListener('click', saveReading);
+document.getElementById('reading-clear').addEventListener('click', clearReading);
+
+document.getElementById('reading-modal').addEventListener('click', e => {
+    if (e.target === document.getElementById('reading-modal')) closeReadingModal();
+});
 
 // ---- Article viewer ----
 

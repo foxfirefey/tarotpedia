@@ -22,7 +22,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="styles.css?v=07f8210">
+    <link rel="stylesheet" href="styles.css?v=87bed4e">
 </head>
 <body>
     <header>
@@ -46,6 +46,11 @@
                 </optgroup>
                 <optgroup label="My Spreads" id="optgroup-user" class="hidden"></optgroup>
             </select>
+            <button id="reading-btn" class="share-btn" title="Set a reading topic">
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+                </svg>
+            </button>
             <button id="draw-btn" class="draw-btn">
                 <span class="draw-text">Draw</span>
                 <svg class="draw-reload" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
@@ -127,6 +132,26 @@
             </div>
         </div>
 
+        <div id="reading-modal" class="modal hidden">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h2>Your reading topic</h2>
+                    <button class="modal-close" id="reading-modal-close">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <textarea id="reading-input" class="reading-textarea" rows="4"></textarea>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn-reset" id="reading-clear">Clear</button>
+                    <button class="btn-save" id="reading-save">Set reading</button>
+                </div>
+            </div>
+        </div>
+
+        <div id="reading-display" class="reading-display hidden">
+            <span id="reading-text"></span>
+        </div>
+
         <div id="card-display" class="card-display"></div>
 
         <div id="article-viewer" class="article-viewer hidden">
@@ -153,7 +178,7 @@
         <p>Because 78 cards wasn't enough.</p>
     </footer>
 
-    <script src="lang.js?v=07f8210"></script>
-    <script src="app.js?v=07f8210"></script>
+    <script src="lang.js?v=87bed4e"></script>
+    <script src="app.js?v=87bed4e"></script>
 </body>
 </html>

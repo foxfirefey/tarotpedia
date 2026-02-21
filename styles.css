@@ -213,6 +213,55 @@ main {
     display: none;
 }
 
+/* Reading display */
+.reading-display {
+    text-align: center;
+    color: #c0a0c0;
+    font-style: italic;
+    font-size: 1.05rem;
+    padding: 0.75rem 1.5rem;
+    border: 1px solid rgba(224, 86, 160, 0.3);
+    border-radius: 8px;
+    background: rgba(0, 0, 0, 0.3);
+    max-width: 600px;
+    margin: 0 auto 1.5rem;
+}
+
+.reading-display.hidden {
+    display: none;
+}
+
+/* Reading modal */
+
+.reading-textarea {
+    width: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    border: 1px solid rgba(224, 86, 160, 0.5);
+    color: #e8e8e8;
+    padding: 0.75rem;
+    font-size: 0.95rem;
+    font-family: inherit;
+    border-radius: 6px;
+    outline: none;
+    resize: vertical;
+    min-height: 100px;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.reading-textarea:focus {
+    border-color: #e056a0;
+    box-shadow: 0 0 8px rgba(224, 86, 160, 0.3);
+}
+
+.reading-textarea::placeholder {
+    color: rgba(200, 200, 200, 0.4);
+}
+
+#reading-btn.active {
+    border-color: #e056a0;
+    background: rgba(224, 86, 160, 0.15);
+}
+
 .card-display {
     display: flex;
     flex-wrap: wrap;
