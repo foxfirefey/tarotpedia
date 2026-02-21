@@ -66,53 +66,70 @@ main {
     padding: 2rem 1rem;
 }
 
-.spread-selection {
+/* Spread controls row */
+.spread-controls {
     display: flex;
     justify-content: center;
-    gap: 1rem;
+    align-items: center;
+    gap: 0.75rem;
     flex-wrap: wrap;
     margin-bottom: 2rem;
 }
 
-.spread-btn {
+/* Spread dropdown */
+.spread-select {
     background: linear-gradient(145deg, #2a1a2e, #1a0a1a);
     border: 2px solid #e056a0;
     color: #e056a0;
-    padding: 1rem 2rem;
-    font-size: 1.1rem;
+    padding: 0.75rem 2.5rem 0.75rem 1rem;
+    font-size: 1rem;
     font-family: inherit;
     cursor: pointer;
     border-radius: 8px;
     transition: all 0.3s ease;
-    text-transform: uppercase;
-    letter-spacing: 0.1em;
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23e056a0' d='M6 9L1 4h10z'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 0.75rem center;
+    background-size: 12px;
+    outline: none;
+    min-width: 160px;
 }
 
-.spread-btn:hover {
-    background: linear-gradient(145deg, #3a2a3e, #2a1a2e);
+.spread-select:hover {
     box-shadow: 0 0 20px rgba(224, 86, 160, 0.4);
-    transform: translateY(-2px);
 }
 
-.spread-btn:active {
-    transform: translateY(0);
+.spread-select:focus {
+    border-color: #e056a0;
+    box-shadow: 0 0 8px rgba(224, 86, 160, 0.3);
 }
 
-.spread-btn.selected {
-    background: #e056a0;
-    color: #0d050d;
-    box-shadow: 0 0 20px rgba(224, 86, 160, 0.4);
+.spread-select optgroup {
+    background: #1a0a1a;
+    color: #c0a0c0;
+    font-style: normal;
+}
+
+.spread-select option {
+    background: #1a0a1a;
+    color: #e8e8e8;
+}
+
+.spread-select optgroup.hidden {
+    display: none;
 }
 
 /* Draw button */
 .draw-btn {
-    display: block;
-    margin: 0 auto 2rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4em;
     background: linear-gradient(145deg, #2a1a2e, #1a0a1a);
     border: 2px solid #e056a0;
     color: #e056a0;
-    padding: 1rem 3rem;
-    font-size: 1.25rem;
+    padding: 0.75rem 2rem;
+    font-size: 1.1rem;
     font-family: inherit;
     cursor: pointer;
     border-radius: 8px;
@@ -141,13 +158,14 @@ main {
     border-radius: 50%;
     animation: spin 0.8s linear infinite;
     vertical-align: middle;
+    flex-shrink: 0;
 }
 
 .draw-reload {
     display: none;
     vertical-align: middle;
-    margin-left: 0.4em;
     opacity: 0.8;
+    flex-shrink: 0;
 }
 
 .draw-btn.loading {
@@ -172,6 +190,51 @@ main {
     to { transform: rotate(360deg); }
 }
 
+/* Share button */
+.share-btn {
+    background: transparent;
+    border: 2px solid rgba(224, 86, 160, 0.5);
+    color: #e056a0;
+    padding: 0.75rem;
+    cursor: pointer;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.share-btn:hover {
+    border-color: #e056a0;
+    box-shadow: 0 0 15px rgba(224, 86, 160, 0.4);
+    transform: translateY(-2px);
+}
+
+.share-btn.hidden {
+    display: none;
+}
+
+/* Toast notification */
+.copy-toast {
+    position: fixed;
+    bottom: 2rem;
+    left: 50%;
+    transform: translateX(-50%);
+    background: #e056a0;
+    color: #0d050d;
+    padding: 0.6rem 1.5rem;
+    border-radius: 999px;
+    font-size: 0.9rem;
+    font-weight: bold;
+    z-index: 200;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+}
+
+.copy-toast.hidden {
+    display: none;
+}
+
 .card-display {
     display: flex;
     flex-wrap: wrap;
@@ -187,6 +250,14 @@ main {
 
 /* Three Card Layout */
 .card-display.three-card {
+    justify-content: center;
+}
+
+/* User spread layout */
+.card-display.user-spread {
+    display: grid;
+    gap: 1rem;
+    justify-items: center;
     justify-content: center;
 }
 
@@ -340,10 +411,12 @@ main {
     border: 2px solid #e056a0;
     border-radius: 12px;
     width: 90%;
-    max-width: 400px;
+    max-width: 480px;
     max-height: 90vh;
     overflow-y: auto;
     box-shadow: 0 0 30px rgba(224, 86, 160, 0.3);
+    display: flex;
+    flex-direction: column;
 }
 
 .modal-header {
@@ -352,6 +425,7 @@ main {
     align-items: center;
     padding: 1rem 1.5rem;
     border-bottom: 1px solid rgba(224, 86, 160, 0.3);
+    flex-shrink: 0;
 }
 
 .modal-header h2 {
@@ -375,8 +449,45 @@ main {
     transform: scale(1.2);
 }
 
+/* Modal tabs */
+.modal-tabs {
+    display: flex;
+    border-bottom: 1px solid rgba(224, 86, 160, 0.3);
+    flex-shrink: 0;
+}
+
+.modal-tab {
+    flex: 1;
+    background: none;
+    border: none;
+    color: #c0a0c0;
+    padding: 0.75rem 1rem;
+    font-size: 0.9rem;
+    font-family: inherit;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    border-bottom: 2px solid transparent;
+    margin-bottom: -1px;
+}
+
+.modal-tab:hover {
+    color: #e056a0;
+}
+
+.modal-tab.active {
+    color: #e056a0;
+    border-bottom-color: #e056a0;
+}
+
 .modal-body {
     padding: 1.5rem;
+    overflow-y: auto;
+}
+
+.tab-panel.hidden {
+    display: none;
 }
 
 .settings-section {
@@ -449,6 +560,11 @@ main {
     gap: 1rem;
     padding: 1rem 1.5rem;
     border-top: 1px solid rgba(224, 86, 160, 0.3);
+    flex-shrink: 0;
+}
+
+.modal-footer.hidden {
+    display: none;
 }
 
 .btn-reset, .btn-save {
@@ -481,6 +597,161 @@ main {
 .btn-save:hover {
     background: #f066b0;
     box-shadow: 0 0 15px rgba(224, 86, 160, 0.5);
+}
+
+/* Spreads tab */
+.spread-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.spread-list-item {
+    border: 1px solid rgba(224, 86, 160, 0.3);
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.spread-list-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.6rem 0.75rem;
+    background: rgba(0, 0, 0, 0.3);
+}
+
+.spread-list-name {
+    color: #e8e8e8;
+    font-size: 0.9rem;
+    font-weight: bold;
+}
+
+.spread-list-actions {
+    display: flex;
+    gap: 0.4rem;
+}
+
+.spread-action-btn {
+    background: transparent;
+    border: 1px solid rgba(224, 86, 160, 0.4);
+    color: #c0a0c0;
+    padding: 0.25rem 0.6rem;
+    font-size: 0.75rem;
+    font-family: inherit;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.spread-action-btn:hover {
+    border-color: #e056a0;
+    color: #e056a0;
+}
+
+.spread-action-delete {
+    border-color: rgba(255, 80, 80, 0.4);
+    color: #ff8080;
+}
+
+.spread-action-delete:hover {
+    border-color: #ff5050;
+    color: #ff5050;
+}
+
+/* Spread editor (collapsed by default) */
+.spread-editor {
+    display: none;
+    padding: 0.75rem;
+    border-top: 1px solid rgba(224, 86, 160, 0.2);
+    background: rgba(0, 0, 0, 0.2);
+}
+
+.spread-editor.open {
+    display: block;
+}
+
+.spread-editor-inner {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.position-editor-row {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+}
+
+.position-editor-row label {
+    color: #c0a0c0;
+    font-size: 0.8rem;
+    min-width: 70px;
+    flex-shrink: 0;
+}
+
+.position-editor-labels {
+    display: flex;
+    gap: 0.4rem;
+    font-size: 0.7rem;
+    color: #c0a0c0;
+    padding: 0 0.2rem;
+}
+
+.position-editor-labels span:nth-child(1) { min-width: 70px; flex-shrink: 0; }
+.position-editor-labels span:nth-child(2) { flex: 1; }
+.position-editor-labels span:nth-child(3) { width: 50px; flex-shrink: 0; }
+.position-editor-labels span:nth-child(4) { width: 50px; flex-shrink: 0; }
+.position-editor-labels span:nth-child(5) { width: 24px; flex-shrink: 0; }
+
+.pos-name-input {
+    flex: 1;
+    background: rgba(0, 0, 0, 0.5);
+    border: 1px solid rgba(224, 86, 160, 0.4);
+    color: #e8e8e8;
+    padding: 0.35rem 0.5rem;
+    font-size: 0.8rem;
+    font-family: inherit;
+    border-radius: 4px;
+    outline: none;
+}
+
+.pos-row-input,
+.pos-col-input {
+    width: 50px;
+    flex-shrink: 0;
+    background: rgba(0, 0, 0, 0.5);
+    border: 1px solid rgba(224, 86, 160, 0.4);
+    color: #e8e8e8;
+    padding: 0.35rem 0.4rem;
+    font-size: 0.8rem;
+    font-family: inherit;
+    border-radius: 4px;
+    outline: none;
+}
+
+.spread-name-input {
+    flex: 1;
+    background: rgba(0, 0, 0, 0.5);
+    border: 1px solid rgba(224, 86, 160, 0.4);
+    color: #e8e8e8;
+    padding: 0.35rem 0.5rem;
+    font-size: 0.85rem;
+    font-family: inherit;
+    border-radius: 4px;
+    outline: none;
+}
+
+.pos-name-input:focus,
+.pos-row-input:focus,
+.pos-col-input:focus,
+.spread-name-input:focus {
+    border-color: #e056a0;
+    box-shadow: 0 0 6px rgba(224, 86, 160, 0.3);
+}
+
+.spread-editor-save {
+    align-self: flex-end;
+    margin-top: 0.25rem;
 }
 
 .card-title {
@@ -678,11 +949,6 @@ footer {
 @media (max-width: 768px) {
     h1 {
         font-size: 2rem;
-    }
-
-    .spread-btn {
-        padding: 0.75rem 1.5rem;
-        font-size: 1rem;
     }
 
     .tarot-card {

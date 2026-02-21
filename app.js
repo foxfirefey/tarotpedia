@@ -23,13 +23,7 @@ const TRANSLATIONS = {
         settingsTitle: 'Settings',
         wikiLanguage: 'Wikipedia Language',
         articleLanguage: 'Article Language:',
-        oneCardSection: 'One Card',
-        threeCardSection: 'Three Card',
-        position: 'Position:',
-        position1: 'Position 1:',
-        position2: 'Position 2:',
-        position3: 'Position 3:',
-        resetDefaults: 'Reset to Defaults',
+        resetDefaults: 'Reset',
         save: 'Save',
         drawingArticles: 'Drawing articles...',
         readArticle: 'Read Article',
@@ -39,6 +33,19 @@ const TRANSLATIONS = {
         settingsTooltip: 'Change position names and languages',
         errorMessage: 'The spirits of Wikipedia are currently unavailable.',
         tryAgain: 'Please try again.',
+        settingsTab: 'Settings',
+        spreadsTab: 'Spreads',
+        shareTooltip: 'Copy shareable link',
+        linkCopied: 'Link copied!',
+        editSpread: 'Edit',
+        deleteSpread: 'Delete',
+        resetSpread: 'Reset',
+        addPosition: '+ Add Position',
+        newSpread: '+ New Spread',
+        spreadName: 'Spread Name',
+        positionName: 'Position',
+        row: 'Row',
+        col: 'Col',
         defaultPositions: {
             one: 'The Answer',
             three: ['Past', 'Present', 'Future'],
@@ -54,13 +61,7 @@ const TRANSLATIONS = {
         settingsTitle: 'Settings',
         wikiLanguage: 'Wikipedia Language',
         articleLanguage: 'Article Language:',
-        oneCardSection: 'One Card',
-        threeCardSection: 'Three Card',
-        position: 'Position:',
-        position1: 'Position 1:',
-        position2: 'Position 2:',
-        position3: 'Position 3:',
-        resetDefaults: 'Reset to Defaults',
+        resetDefaults: 'Reset',
         save: 'Save',
         drawingArticles: 'Getting articles...',
         readArticle: 'Read Article',
@@ -70,6 +71,19 @@ const TRANSLATIONS = {
         settingsTooltip: 'Change position names and languages',
         errorMessage: 'Wikipedia is not working right now.',
         tryAgain: 'Please try again.',
+        settingsTab: 'Settings',
+        spreadsTab: 'Spreads',
+        shareTooltip: 'Copy shareable link',
+        linkCopied: 'Link copied!',
+        editSpread: 'Edit',
+        deleteSpread: 'Delete',
+        resetSpread: 'Reset',
+        addPosition: '+ Add Position',
+        newSpread: '+ New Spread',
+        spreadName: 'Spread Name',
+        positionName: 'Position',
+        row: 'Row',
+        col: 'Col',
         defaultPositions: {
             one: 'The Answer',
             three: ['Past', 'Present', 'Future'],
@@ -85,13 +99,7 @@ const TRANSLATIONS = {
         settingsTitle: 'Configuración',
         wikiLanguage: 'Idioma de Wikipedia',
         articleLanguage: 'Idioma del artículo:',
-        oneCardSection: 'Una Carta',
-        threeCardSection: 'Tres Cartas',
-        position: 'Posición:',
-        position1: 'Posición 1:',
-        position2: 'Posición 2:',
-        position3: 'Posición 3:',
-        resetDefaults: 'Restablecer Predeterminados',
+        resetDefaults: 'Restablecer',
         save: 'Guardar',
         drawingArticles: 'Sacando artículos...',
         readArticle: 'Leer Artículo',
@@ -101,6 +109,19 @@ const TRANSLATIONS = {
         settingsTooltip: 'Cambiar nombres de posiciones e idiomas',
         errorMessage: 'Los espíritus de Wikipedia no están disponibles.',
         tryAgain: 'Por favor, inténtalo de nuevo.',
+        settingsTab: 'Settings',
+        spreadsTab: 'Spreads',
+        shareTooltip: 'Copiar enlace',
+        linkCopied: '¡Enlace copiado!',
+        editSpread: 'Editar',
+        deleteSpread: 'Eliminar',
+        resetSpread: 'Restablecer',
+        addPosition: '+ Agregar posición',
+        newSpread: '+ Nueva tirada',
+        spreadName: 'Nombre de la tirada',
+        positionName: 'Posición',
+        row: 'Fila',
+        col: 'Col',
         defaultPositions: {
             one: 'La Respuesta',
             three: ['Pasado', 'Presente', 'Futuro'],
@@ -116,13 +137,7 @@ const TRANSLATIONS = {
         settingsTitle: 'Einstellungen',
         wikiLanguage: 'Wikipedia-Sprache',
         articleLanguage: 'Artikelsprache:',
-        oneCardSection: 'Eine Karte',
-        threeCardSection: 'Drei Karten',
-        position: 'Position:',
-        position1: 'Position 1:',
-        position2: 'Position 2:',
-        position3: 'Position 3:',
-        resetDefaults: 'Auf Standard zurücksetzen',
+        resetDefaults: 'Zurücksetzen',
         save: 'Speichern',
         drawingArticles: 'Artikel werden gezogen...',
         readArticle: 'Artikel lesen',
@@ -132,6 +147,19 @@ const TRANSLATIONS = {
         settingsTooltip: 'Positionsnamen und Sprachen ändern',
         errorMessage: 'Die Geister von Wikipedia sind derzeit nicht verfügbar.',
         tryAgain: 'Bitte versuche es erneut.',
+        settingsTab: 'Settings',
+        spreadsTab: 'Spreads',
+        shareTooltip: 'Link kopieren',
+        linkCopied: 'Link kopiert!',
+        editSpread: 'Bearbeiten',
+        deleteSpread: 'Löschen',
+        resetSpread: 'Zurücksetzen',
+        addPosition: '+ Position hinzufügen',
+        newSpread: '+ Neue Legung',
+        spreadName: 'Name der Legung',
+        positionName: 'Position',
+        row: 'Zeile',
+        col: 'Spalte',
         defaultPositions: {
             one: 'Die Antwort',
             three: ['Vergangenheit', 'Gegenwart', 'Zukunft'],
@@ -147,13 +175,7 @@ const TRANSLATIONS = {
         settingsTitle: 'Paramètres',
         wikiLanguage: 'Langue Wikipédia',
         articleLanguage: 'Langue de l\'article:',
-        oneCardSection: 'Une Carte',
-        threeCardSection: 'Trois Cartes',
-        position: 'Position:',
-        position1: 'Position 1:',
-        position2: 'Position 2:',
-        position3: 'Position 3:',
-        resetDefaults: 'Réinitialiser par défaut',
+        resetDefaults: 'Réinitialiser',
         save: 'Enregistrer',
         drawingArticles: 'Tirage des articles...',
         readArticle: 'Lire l\'Article',
@@ -163,6 +185,19 @@ const TRANSLATIONS = {
         settingsTooltip: 'Changer les noms de positions et les langues',
         errorMessage: 'Les esprits de Wikipédia sont actuellement indisponibles.',
         tryAgain: 'Veuillez réessayer.',
+        settingsTab: 'Settings',
+        spreadsTab: 'Spreads',
+        shareTooltip: 'Copier le lien',
+        linkCopied: 'Lien copié !',
+        editSpread: 'Modifier',
+        deleteSpread: 'Supprimer',
+        resetSpread: 'Réinitialiser',
+        addPosition: '+ Ajouter une position',
+        newSpread: '+ Nouveau tirage',
+        spreadName: 'Nom du tirage',
+        positionName: 'Position',
+        row: 'Ligne',
+        col: 'Col',
         defaultPositions: {
             one: 'La Réponse',
             three: ['Passé', 'Présent', 'Futur'],
@@ -178,13 +213,7 @@ const TRANSLATIONS = {
         settingsTitle: '設定',
         wikiLanguage: 'Wikipedia言語',
         articleLanguage: '記事の言語:',
-        oneCardSection: '1枚のカード',
-        threeCardSection: '3枚のカード',
-        position: 'ポジション:',
-        position1: 'ポジション1:',
-        position2: 'ポジション2:',
-        position3: 'ポジション3:',
-        resetDefaults: 'デフォルトにリセット',
+        resetDefaults: 'リセット',
         save: '保存',
         drawingArticles: '記事を引いています...',
         readArticle: '記事を読む',
@@ -194,6 +223,19 @@ const TRANSLATIONS = {
         settingsTooltip: 'ポジション名と言語を変更',
         errorMessage: 'Wikipediaの精霊は現在利用できません。',
         tryAgain: 'もう一度お試しください。',
+        settingsTab: 'Settings',
+        spreadsTab: 'Spreads',
+        shareTooltip: 'リンクをコピー',
+        linkCopied: 'リンクをコピーしました！',
+        editSpread: '編集',
+        deleteSpread: '削除',
+        resetSpread: 'リセット',
+        addPosition: '+ 位置を追加',
+        newSpread: '+ 新しいスプレッド',
+        spreadName: 'スプレッド名',
+        positionName: 'ポジション',
+        row: '行',
+        col: '列',
         defaultPositions: {
             one: '答え',
             three: ['過去', '現在', '未来'],
@@ -209,13 +251,7 @@ const TRANSLATIONS = {
         settingsTitle: 'Configurações',
         wikiLanguage: 'Idioma da Wikipédia',
         articleLanguage: 'Idioma do artigo:',
-        oneCardSection: 'Uma Carta',
-        threeCardSection: 'Três Cartas',
-        position: 'Posição:',
-        position1: 'Posição 1:',
-        position2: 'Posição 2:',
-        position3: 'Posição 3:',
-        resetDefaults: 'Redefinir para Padrões',
+        resetDefaults: 'Redefinir',
         save: 'Salvar',
         drawingArticles: 'Puxando artigos...',
         readArticle: 'Ler Artigo',
@@ -225,6 +261,19 @@ const TRANSLATIONS = {
         settingsTooltip: 'Alterar nomes de posições e idiomas',
         errorMessage: 'Os espíritos da Wikipédia estão atualmente indisponíveis.',
         tryAgain: 'Por favor, tente novamente.',
+        settingsTab: 'Settings',
+        spreadsTab: 'Spreads',
+        shareTooltip: 'Copiar link',
+        linkCopied: 'Link copiado!',
+        editSpread: 'Editar',
+        deleteSpread: 'Excluir',
+        resetSpread: 'Redefinir',
+        addPosition: '+ Adicionar posição',
+        newSpread: '+ Nova tiragem',
+        spreadName: 'Nome da tiragem',
+        positionName: 'Posição',
+        row: 'Linha',
+        col: 'Col',
         defaultPositions: {
             one: 'A Resposta',
             three: ['Passado', 'Presente', 'Futuro'],
@@ -233,42 +282,78 @@ const TRANSLATIONS = {
     }
 };
 
-// Default spread configurations (will be updated based on language)
-const DEFAULT_POSITIONS = {
-    one: [TRANSLATIONS.en.defaultPositions.one],
-    three: TRANSLATIONS.en.defaultPositions.three
-};
-
+// Spread configurations — positions are { name } objects
 const SPREADS = {
     one: {
+        id: 'one',
+        isDefault: true,
         count: 1,
-        positions: ['The Answer'],
-        layoutClass: 'one-card'
+        layoutClass: 'one-card',
+        positions: [{ name: 'The Answer' }]
     },
     three: {
+        id: 'three',
+        isDefault: true,
         count: 3,
-        positions: ['Past', 'Present', 'Future'],
-        layoutClass: 'three-card'
+        layoutClass: 'three-card',
+        positions: [{ name: 'Past' }, { name: 'Present' }, { name: 'Future' }]
     },
     celtic: {
+        id: 'celtic',
+        isDefault: true,
         count: 10,
+        layoutClass: 'celtic-cross',
         positions: [
-            'Present Situation',
-            'The Challenge',
-            'Crown (Conscious)',
-            'Foundation (Unconscious)',
-            'Past',
-            'Future',
-            'Self',
-            'Environment',
-            'Hopes & Fears',
-            'Outcome'
-        ],
-        layoutClass: 'celtic-cross'
+            { name: 'Present Situation' },
+            { name: 'The Challenge' },
+            { name: 'Crown (Conscious)' },
+            { name: 'Foundation (Unconscious)' },
+            { name: 'Past' },
+            { name: 'Future' },
+            { name: 'Self' },
+            { name: 'Environment' },
+            { name: 'Hopes & Fears' },
+            { name: 'Outcome' }
+        ]
     }
 };
 
-// Load language preference from localStorage
+// State
+let currentSpreadType = null;
+let currentArticles = null;
+let userSpreads = [];
+
+// ---- Utility functions ----
+
+function escapeHtml(str) {
+    return String(str)
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;')
+        .replace(/'/g, '&#039;');
+}
+
+function getAllSpreads() {
+    return [SPREADS.one, SPREADS.three, SPREADS.celtic, ...userSpreads];
+}
+
+function getSpreadById(id) {
+    if (SPREADS[id]) return SPREADS[id];
+    return userSpreads.find(s => s.id === id) || null;
+}
+
+function getSpreadDisplayName(spread) {
+    if (!spread.isDefault) return spread.name;
+    const t = TRANSLATIONS[currentLanguage] || TRANSLATIONS.en;
+    if (spread.id === 'one') return t.oneCard;
+    if (spread.id === 'three') return t.threeCard;
+    if (spread.id === 'celtic') return t.celticCross;
+    return spread.id;
+}
+
+// ---- LocalStorage helpers ----
+
 function loadLanguagePreference() {
     const saved = localStorage.getItem('wikitarot-language');
     if (saved && LANGUAGES[saved]) {
@@ -276,155 +361,183 @@ function loadLanguagePreference() {
     }
 }
 
-// Save language preference to localStorage
 function saveLanguagePreference() {
     localStorage.setItem('wikitarot-language', currentLanguage);
 }
 
-// Update UI text based on current language
-function updateUILanguage() {
-    const t = TRANSLATIONS[currentLanguage] || TRANSLATIONS.en;
-    
-    // Update HTML lang attribute
-    document.documentElement.lang = currentLanguage === 'simple' ? 'en' : currentLanguage;
-    
-    // Update header
-    document.querySelector('.tagline').textContent = t.tagline;
-    
-    // Update spread buttons
-    document.querySelector('[data-spread="one"]').textContent = t.oneCard;
-    document.querySelector('[data-spread="three"]').textContent = t.threeCard;
-    document.querySelector('[data-spread="celtic"]').textContent = t.celticCross;
-    
-    // Update draw button
-    document.querySelector('#draw-btn .draw-text').textContent = t.draw;
-
-    // Update settings modal
-    document.querySelector('.modal-header h2').textContent = t.settingsTitle;
-    document.querySelector('.settings-section h3').textContent = t.wikiLanguage;
-    document.querySelectorAll('.settings-section h3')[1].textContent = t.oneCardSection;
-    document.querySelectorAll('.settings-section h3')[2].textContent = t.threeCardSection;
-    
-    // Update labels
-    document.querySelector('label[for="language-select"]').textContent = t.articleLanguage;
-    document.querySelector('label[for="one-0"]').textContent = t.position;
-    document.querySelector('label[for="three-0"]').textContent = t.position1;
-    document.querySelector('label[for="three-1"]').textContent = t.position2;
-    document.querySelector('label[for="three-2"]').textContent = t.position3;
-    
-    // Update buttons
-    document.getElementById('reset-defaults').textContent = t.resetDefaults;
-    document.getElementById('save-settings').textContent = t.save;
-    
-    // Update tooltips
-    document.getElementById('settings-btn').title = t.settingsTooltip;
-    document.getElementById('article-external').title = t.openInNewTab;
-    document.getElementById('article-close').title = t.close;
-    
-    // Update footer
-    document.querySelector('footer p').textContent = t.footer;
-    
-    // Update default positions for reference
-    DEFAULT_POSITIONS.one = [t.defaultPositions.one];
-    DEFAULT_POSITIONS.three = t.defaultPositions.three;
-    
-    // Always update Celtic Cross positions (not customizable)
-    SPREADS.celtic.positions = t.defaultPositions.celtic;
-    
-    // Only update one/three card positions if no custom positions are saved
-    const savedPositions = localStorage.getItem('wikitarot-positions');
-    if (!savedPositions) {
-        SPREADS.one.positions = [t.defaultPositions.one];
-        SPREADS.three.positions = t.defaultPositions.three;
-    }
-}
-
-// Load custom positions from localStorage
-function loadCustomPositions() {
-    const saved = localStorage.getItem('wikitarot-positions');
+function loadUserSpreads() {
+    const saved = localStorage.getItem('wikitarot-spreads');
     if (saved) {
-        const custom = JSON.parse(saved);
-        if (custom.one) SPREADS.one.positions = custom.one;
-        if (custom.three) SPREADS.three.positions = custom.three;
+        try {
+            userSpreads = JSON.parse(saved);
+        } catch (e) {
+            userSpreads = [];
+        }
     }
 }
 
-// Save custom positions to localStorage
+function saveUserSpreads() {
+    localStorage.setItem('wikitarot-spreads', JSON.stringify(userSpreads));
+}
+
+function loadLastSpread() {
+    const saved = localStorage.getItem('wikitarot-last-spread');
+    const spreadId = (saved && getSpreadById(saved)) ? saved : 'three';
+    currentSpreadType = spreadId;
+    const select = document.getElementById('spread-select');
+    if (select) select.value = spreadId;
+    renderUndrawnSpread(spreadId);
+}
+
+function saveLastSpread(id) {
+    localStorage.setItem('wikitarot-last-spread', id);
+}
+
+// Migrate old string[] positions to { name }[] format, load into SPREADS
+function migrateAndLoadPositions() {
+    const saved = localStorage.getItem('wikitarot-positions');
+    if (!saved) return;
+    try {
+        const custom = JSON.parse(saved);
+        if (custom.one) {
+            SPREADS.one.positions = custom.one.map(p => typeof p === 'string' ? { name: p } : p);
+        }
+        if (custom.three) {
+            SPREADS.three.positions = custom.three.map(p => typeof p === 'string' ? { name: p } : p);
+        }
+        if (custom.celtic) {
+            SPREADS.celtic.positions = custom.celtic.map(p => typeof p === 'string' ? { name: p } : p);
+        }
+    } catch (e) {
+        // ignore parse errors
+    }
+}
+
 function saveCustomPositions() {
     const custom = {
         one: SPREADS.one.positions,
-        three: SPREADS.three.positions
+        three: SPREADS.three.positions,
+        celtic: SPREADS.celtic.positions
     };
     localStorage.setItem('wikitarot-positions', JSON.stringify(custom));
 }
 
-// Initialize custom positions and language on load
-loadLanguagePreference();
-loadCustomPositions();
-updateUILanguage();
+// ---- UI Language ----
 
-// DOM Elements
-const cardDisplay = document.getElementById('card-display');
-const spreadButtons = document.querySelectorAll('.spread-btn');
-const drawBtn = document.getElementById('draw-btn');
+function updateUILanguage() {
+    const t = TRANSLATIONS[currentLanguage] || TRANSLATIONS.en;
+    const te = TRANSLATIONS.en;
 
-// Current state
-let currentSpreadType = null;
+    document.documentElement.lang = currentLanguage === 'simple' ? 'en' : currentLanguage;
+    document.querySelector('.tagline').textContent = t.tagline;
+    document.querySelector('#draw-btn .draw-text').textContent = t.draw;
+    document.querySelector('.modal-header h2').textContent = t.settingsTitle;
+    document.querySelector('.settings-section h3').textContent = t.wikiLanguage;
+    document.querySelector('label[for="language-select"]').textContent = t.articleLanguage;
+    document.getElementById('save-settings').textContent = t.save;
+    document.getElementById('reset-language').textContent = t.resetDefaults || te.resetDefaults;
+    document.getElementById('settings-btn').title = t.settingsTooltip;
+    document.getElementById('article-external').title = t.openInNewTab;
+    document.getElementById('article-close').title = t.close;
+    document.querySelector('footer p').textContent = t.footer;
 
-// Fetch random Wikipedia articles, skipping disambiguation pages
-async function fetchRandomArticles(count) {
-    const domain = LANGUAGES[currentLanguage].domain;
-    const articles = [];
+    // Tab labels
+    const tabSettings = document.querySelector('.modal-tab[data-tab="settings"]');
+    const tabSpreads = document.querySelector('.modal-tab[data-tab="spreads"]');
+    if (tabSettings) tabSettings.textContent = t.settingsTab || te.settingsTab;
+    if (tabSpreads) tabSpreads.textContent = t.spreadsTab || te.spreadsTab;
 
-    while (articles.length < count) {
-        const limit = (count - articles.length) + 5;
-        const url = `https://${domain}/w/api.php?action=query&generator=random&grnnamespace=0&grnlimit=${limit}&prop=pageprops&ppprop=disambiguation&format=json&origin=*`;
+    // Share button tooltip
+    const shareBtn = document.getElementById('share-btn');
+    if (shareBtn) shareBtn.title = t.shareTooltip || te.shareTooltip;
 
-        const response = await fetch(url);
+    // Dropdown option labels for default spreads
+    const optOne = document.querySelector('#optgroup-default option[value="one"]');
+    const optThree = document.querySelector('#optgroup-default option[value="three"]');
+    const optCeltic = document.querySelector('#optgroup-default option[value="celtic"]');
+    if (optOne) optOne.textContent = t.oneCard;
+    if (optThree) optThree.textContent = t.threeCard;
+    if (optCeltic) optCeltic.textContent = t.celticCross;
 
-        if (!response.ok) {
-            throw new Error('Failed to fetch from Wikipedia API');
-        }
-
-        const data = await response.json();
-        const pages = Object.values(data.query.pages);
-        const nonDisambig = pages.filter(page => !page.pageprops || !('disambiguation' in page.pageprops));
-        articles.push(...nonDisambig);
+    // Update default spread positions from translations (don't overwrite saved custom positions)
+    const savedStr = localStorage.getItem('wikitarot-positions');
+    const saved = savedStr ? (() => { try { return JSON.parse(savedStr); } catch(e) { return {}; } })() : {};
+    if (!saved.one) {
+        SPREADS.one.positions = [{ name: t.defaultPositions.one }];
     }
-
-    return articles.slice(0, count);
+    if (!saved.three) {
+        SPREADS.three.positions = t.defaultPositions.three.map(name => ({ name }));
+    }
+    if (!saved.celtic) {
+        SPREADS.celtic.positions = t.defaultPositions.celtic.map(name => ({ name }));
+    }
 }
 
-// Create an undrawn card (face down with position label)
+// ---- Dropdown ----
+
+function rebuildSpreadDropdown() {
+    const optgroupUser = document.getElementById('optgroup-user');
+    optgroupUser.innerHTML = '';
+    if (userSpreads.length === 0) {
+        optgroupUser.classList.add('hidden');
+    } else {
+        optgroupUser.classList.remove('hidden');
+        userSpreads.forEach(spread => {
+            const option = document.createElement('option');
+            option.value = spread.id;
+            option.textContent = spread.name;
+            optgroupUser.appendChild(option);
+        });
+    }
+}
+
+// ---- Card rendering ----
+
+function computeUserSpreadGrid(positions) {
+    const maxRow = Math.max(...positions.map(p => p.row || 1));
+    const maxCol = Math.max(...positions.map(p => p.col || 1));
+    return { rows: maxRow, cols: maxCol };
+}
+
 function createUndrawnCard(position, index) {
+    const name = position.name || position;
     const card = document.createElement('div');
     card.className = 'tarot-card';
     card.dataset.position = index + 1;
 
+    if (position.row !== undefined && position.col !== undefined) {
+        card.style.gridRow = position.row;
+        card.style.gridColumn = position.col;
+    }
+
     card.innerHTML = `
         <div class="card-inner">
             <div class="card-back">
-                <div class="card-back-position">${position}</div>
+                <div class="card-back-position">${escapeHtml(name)}</div>
                 <div class="card-back-design">
                     <span class="card-back-symbol">?</span>
                 </div>
             </div>
             <div class="card-front">
-                <div class="card-position">${position}</div>
+                <div class="card-position">${escapeHtml(name)}</div>
                 <div class="card-title"></div>
                 <a href="#" class="card-link">Read Article</a>
             </div>
         </div>
     `;
-
     return card;
 }
 
-// Create a single card element with article data
-function createCard(article, position, index, spreadType) {
+function createCard(article, position, index) {
+    const name = position.name || position;
     const card = document.createElement('div');
     card.className = 'tarot-card';
     card.dataset.position = index + 1;
+
+    if (position.row !== undefined && position.col !== undefined) {
+        card.style.gridRow = position.row;
+        card.style.gridColumn = position.col;
+    }
 
     const domain = LANGUAGES[currentLanguage].domain;
     const mobileDomain = domain.replace('wikipedia.org', 'm.wikipedia.org');
@@ -435,20 +548,19 @@ function createCard(article, position, index, spreadType) {
     card.innerHTML = `
         <div class="card-inner">
             <div class="card-back">
-                <div class="card-back-position">${position}</div>
+                <div class="card-back-position">${escapeHtml(name)}</div>
                 <div class="card-back-design">
                     <span class="card-back-symbol">?</span>
                 </div>
             </div>
             <div class="card-front">
-                <div class="card-position">${position}</div>
-                <div class="card-title">${article.title}</div>
+                <div class="card-position">${escapeHtml(name)}</div>
+                <div class="card-title">${escapeHtml(article.title)}</div>
                 <a href="${articleUrl}" target="_blank" rel="noopener noreferrer" class="card-link">${t.readArticle}</a>
             </div>
         </div>
     `;
 
-    // Load article in iframe when clicking the link
     const link = card.querySelector('.card-link');
     link.addEventListener('click', (e) => {
         e.preventDefault();
@@ -456,7 +568,6 @@ function createCard(article, position, index, spreadType) {
         openArticleViewer(article.title, mobileUrl, articleUrl);
     });
 
-    // Reveal card on click
     card.addEventListener('click', () => {
         card.classList.add('revealed');
     });
@@ -464,49 +575,73 @@ function createCard(article, position, index, spreadType) {
     return card;
 }
 
-// Render undrawn spread (face-down cards with position labels)
-function renderUndrawnSpread(type) {
-    const spread = SPREADS[type];
+// ---- Spread rendering ----
 
-    // Clear previous cards
+function applySpreadLayout(spread) {
+    const cardDisplay = document.getElementById('card-display');
+    if (spread.isDefault) {
+        cardDisplay.style.gridTemplateColumns = '';
+        cardDisplay.style.gridTemplateRows = '';
+        cardDisplay.className = `card-display ${spread.layoutClass}`;
+    } else {
+        const { rows, cols } = computeUserSpreadGrid(spread.positions);
+        cardDisplay.className = 'card-display user-spread';
+        cardDisplay.style.gridTemplateColumns = `repeat(${cols}, 180px)`;
+        cardDisplay.style.gridTemplateRows = `repeat(${rows}, 280px)`;
+    }
+}
+
+function renderUndrawnSpread(id) {
+    const spread = getSpreadById(id);
+    if (!spread) return;
+    const cardDisplay = document.getElementById('card-display');
     cardDisplay.innerHTML = '';
-    cardDisplay.className = `card-display ${spread.layoutClass}`;
-
-    // Create and append undrawn cards
+    applySpreadLayout(spread);
     spread.positions.forEach((position, index) => {
-        const card = createUndrawnCard(position, index);
-        cardDisplay.appendChild(card);
+        cardDisplay.appendChild(createUndrawnCard(position, index));
     });
 }
 
-// Render the spread with articles
-function renderSpread(type, articles, onComplete) {
-    const spread = SPREADS[type];
-
-    // Clear previous cards
+function renderSpread(id, articles, onComplete) {
+    const spread = getSpreadById(id);
+    if (!spread) return;
+    const cardDisplay = document.getElementById('card-display');
     cardDisplay.innerHTML = '';
-    cardDisplay.className = `card-display ${spread.layoutClass}`;
+    applySpreadLayout(spread);
 
-    // Create and append cards with staggered reveal
     articles.forEach((article, index) => {
-        const card = createCard(article, spread.positions[index], index, type);
+        const card = createCard(article, spread.positions[index], index);
         cardDisplay.appendChild(card);
-
-        // Auto-reveal cards with staggered timing
         const isLast = index === articles.length - 1;
         setTimeout(() => {
             card.classList.add('revealed');
             if (isLast && onComplete) {
-                // Wait for the flip transition (0.8s) to finish before calling back
                 setTimeout(onComplete, 800);
             }
         }, 500 + (index * 300));
     });
 }
 
-// Show error message
+// All cards immediately revealed — used for shared URL restores
+function renderSpreadRevealed(id, articles) {
+    const spread = getSpreadById(id);
+    if (!spread) return;
+    const cardDisplay = document.getElementById('card-display');
+    cardDisplay.innerHTML = '';
+    applySpreadLayout(spread);
+
+    articles.forEach((article, index) => {
+        const card = createCard(article, spread.positions[index], index);
+        card.classList.add('revealed');
+        cardDisplay.appendChild(card);
+    });
+
+    document.getElementById('share-btn').classList.remove('hidden');
+}
+
 function showError(message) {
     const t = TRANSLATIONS[currentLanguage] || TRANSLATIONS.en;
+    const cardDisplay = document.getElementById('card-display');
     cardDisplay.innerHTML = `
         <div class="error-message">
             <p>${message || t.errorMessage}</p>
@@ -516,16 +651,35 @@ function showError(message) {
     cardDisplay.className = 'card-display';
 }
 
-// Handle spread selection (show undrawn cards)
-function handleSpreadSelection(spreadType) {
-    currentSpreadType = spreadType;
+// ---- Fetch articles ----
 
-    // Update button states
-    spreadButtons.forEach(btn => {
-        btn.classList.toggle('selected', btn.dataset.spread === spreadType);
-    });
+async function fetchRandomArticles(count) {
+    const domain = LANGUAGES[currentLanguage].domain;
+    const articles = [];
 
-    // Hide article viewer when selecting new spread
+    while (articles.length < count) {
+        const limit = (count - articles.length) + 5;
+        const url = `https://${domain}/w/api.php?action=query&generator=random&grnnamespace=0&grnlimit=${limit}&prop=pageprops&ppprop=disambiguation&format=json&origin=*`;
+        const response = await fetch(url);
+        if (!response.ok) throw new Error('Failed to fetch from Wikipedia API');
+        const data = await response.json();
+        const pages = Object.values(data.query.pages);
+        const nonDisambig = pages.filter(page => !page.pageprops || !('disambiguation' in page.pageprops));
+        articles.push(...nonDisambig);
+    }
+
+    return articles.slice(0, count);
+}
+
+// ---- Spread selection ----
+
+function handleSpreadSelection(spreadId) {
+    currentSpreadType = spreadId;
+    currentArticles = null;
+    saveLastSpread(spreadId);
+
+    document.getElementById('share-btn').classList.add('hidden');
+
     const viewer = document.getElementById('article-viewer');
     if (viewer) {
         viewer.classList.add('hidden');
@@ -533,147 +687,496 @@ function handleSpreadSelection(spreadType) {
         if (iframe) iframe.src = '';
     }
 
-    // Show undrawn cards and draw button (reset to default state)
-    renderUndrawnSpread(spreadType);
-    drawBtn.classList.remove('hidden', 'loading', 'drawn');
+    document.getElementById('draw-btn').classList.remove('loading', 'drawn');
+    renderUndrawnSpread(spreadId);
 }
 
-// Handle draw button click
+document.getElementById('spread-select').addEventListener('change', (e) => {
+    handleSpreadSelection(e.target.value);
+});
+
+// ---- Draw ----
+
 async function handleDraw() {
     if (!currentSpreadType) return;
+    const spread = getSpreadById(currentSpreadType);
+    if (!spread) return;
 
-    const spread = SPREADS[currentSpreadType];
+    const count = spread.count !== undefined ? spread.count : spread.positions.length;
+    const drawBtn = document.getElementById('draw-btn');
+    const shareBtn = document.getElementById('share-btn');
 
-    // Show loading state on button
     drawBtn.classList.add('loading');
     drawBtn.classList.remove('drawn');
+    shareBtn.classList.add('hidden');
 
     try {
-        const articles = await fetchRandomArticles(spread.count);
+        const articles = await fetchRandomArticles(count);
+        currentArticles = articles;
         renderSpread(currentSpreadType, articles, () => {
             drawBtn.classList.remove('loading');
             drawBtn.classList.add('drawn');
+            shareBtn.classList.remove('hidden');
         });
     } catch (error) {
         console.error('Error fetching articles:', error);
         drawBtn.classList.remove('loading');
+        currentArticles = null;
         showError();
     }
 }
 
-// Event listeners
-spreadButtons.forEach(button => {
-    button.addEventListener('click', () => {
-        const spreadType = button.dataset.spread;
-        handleSpreadSelection(spreadType);
-    });
-});
+document.getElementById('draw-btn').addEventListener('click', handleDraw);
 
-drawBtn.addEventListener('click', handleDraw);
-
-// Settings modal
-const settingsBtn = document.getElementById('settings-btn');
-const settingsModal = document.getElementById('settings-modal');
-const modalClose = document.getElementById('modal-close');
-const resetDefaultsBtn = document.getElementById('reset-defaults');
-const saveSettingsBtn = document.getElementById('save-settings');
+// ---- Settings modal ----
 
 function openSettingsModal() {
-    // Populate inputs with current values
-    document.getElementById('one-0').value = SPREADS.one.positions[0];
-    document.getElementById('three-0').value = SPREADS.three.positions[0];
-    document.getElementById('three-1').value = SPREADS.three.positions[1];
-    document.getElementById('three-2').value = SPREADS.three.positions[2];
     document.getElementById('language-select').value = currentLanguage;
-
-    settingsModal.classList.remove('hidden');
+    switchSettingsTab('settings');
+    document.getElementById('settings-modal').classList.remove('hidden');
 }
 
 function closeSettingsModal() {
-    settingsModal.classList.add('hidden');
+    document.getElementById('settings-modal').classList.add('hidden');
+}
+
+function switchSettingsTab(tabName) {
+    document.querySelectorAll('.modal-tab').forEach(tab => {
+        tab.classList.toggle('active', tab.dataset.tab === tabName);
+    });
+    document.querySelectorAll('.tab-panel').forEach(panel => {
+        panel.classList.add('hidden');
+    });
+    document.getElementById(`tab-${tabName}`).classList.remove('hidden');
+
+    document.getElementById('settings-footer').classList.toggle('hidden', tabName !== 'settings');
+    document.getElementById('spreads-footer').classList.toggle('hidden', tabName !== 'spreads');
+
+    if (tabName === 'spreads') {
+        renderSpreadsTab();
+    }
 }
 
 function saveSettings() {
     const previousLanguage = currentLanguage;
-    
-    SPREADS.one.positions[0] = document.getElementById('one-0').value.trim() || DEFAULT_POSITIONS.one[0];
-    SPREADS.three.positions[0] = document.getElementById('three-0').value.trim() || DEFAULT_POSITIONS.three[0];
-    SPREADS.three.positions[1] = document.getElementById('three-1').value.trim() || DEFAULT_POSITIONS.three[1];
-    SPREADS.three.positions[2] = document.getElementById('three-2').value.trim() || DEFAULT_POSITIONS.three[2];
-
     currentLanguage = document.getElementById('language-select').value;
-
-    saveCustomPositions();
     saveLanguagePreference();
-    
-    // Update UI language if language changed
+
     if (previousLanguage !== currentLanguage) {
         updateUILanguage();
-    }
-
-    // Update visible position labels if a spread is displayed
-    if (currentSpreadType === 'one' || currentSpreadType === 'three') {
-        const positions = SPREADS[currentSpreadType].positions;
-        const cards = cardDisplay.querySelectorAll('.tarot-card');
-        cards.forEach((card, index) => {
-            const backPosition = card.querySelector('.card-back-position');
-            const frontPosition = card.querySelector('.card-position');
-            if (backPosition) backPosition.textContent = positions[index];
-            if (frontPosition) frontPosition.textContent = positions[index];
-        });
+        // Re-render undrawn spread with updated position names if nothing drawn yet
+        if (!currentArticles && currentSpreadType) {
+            renderUndrawnSpread(currentSpreadType);
+        }
     }
 
     closeSettingsModal();
 }
 
-function resetToDefaults() {
-    document.getElementById('one-0').value = DEFAULT_POSITIONS.one[0];
-    document.getElementById('three-0').value = DEFAULT_POSITIONS.three[0];
-    document.getElementById('three-1').value = DEFAULT_POSITIONS.three[1];
-    document.getElementById('three-2').value = DEFAULT_POSITIONS.three[2];
+function resetLanguage() {
     document.getElementById('language-select').value = DEFAULT_LANGUAGE;
 }
 
-settingsBtn.addEventListener('click', openSettingsModal);
-modalClose.addEventListener('click', closeSettingsModal);
-saveSettingsBtn.addEventListener('click', saveSettings);
-resetDefaultsBtn.addEventListener('click', resetToDefaults);
+document.getElementById('settings-btn').addEventListener('click', openSettingsModal);
+document.getElementById('modal-close').addEventListener('click', closeSettingsModal);
+document.getElementById('save-settings').addEventListener('click', saveSettings);
+document.getElementById('reset-language').addEventListener('click', resetLanguage);
 
-// Close modal on backdrop click
-settingsModal.addEventListener('click', (e) => {
-    if (e.target === settingsModal) {
-        closeSettingsModal();
-    }
+document.querySelectorAll('.modal-tab').forEach(tab => {
+    tab.addEventListener('click', () => switchSettingsTab(tab.dataset.tab));
 });
 
-// Close modal on Escape key
+document.getElementById('settings-modal').addEventListener('click', (e) => {
+    if (e.target === document.getElementById('settings-modal')) closeSettingsModal();
+});
+
 document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape' && !settingsModal.classList.contains('hidden')) {
+    if (e.key === 'Escape' && !document.getElementById('settings-modal').classList.contains('hidden')) {
         closeSettingsModal();
     }
-    if (e.key === 'Escape' && !articleViewer.classList.contains('hidden')) {
+    if (e.key === 'Escape' && !document.getElementById('article-viewer').classList.contains('hidden')) {
         closeArticleViewer();
     }
 });
 
-// Article viewer
-const articleViewer = document.getElementById('article-viewer');
-const articleTitle = document.getElementById('article-title');
-const articleIframe = document.getElementById('article-iframe');
-const articleExternal = document.getElementById('article-external');
-const articleClose = document.getElementById('article-close');
+// ---- Spreads tab ----
+
+function renderSpreadsTab() {
+    const t = TRANSLATIONS[currentLanguage] || TRANSLATIONS.en;
+    const te = TRANSLATIONS.en;
+    const spreads = getAllSpreads();
+    const html = spreads.map(spread => renderSpreadListItem(spread, t, te)).join('');
+    document.getElementById('tab-spreads').innerHTML = `<div class="spread-list">${html}</div>`;
+}
+
+function renderSpreadListItem(spread, t, te) {
+    const name = escapeHtml(getSpreadDisplayName(spread));
+    const editLabel = t.editSpread || te.editSpread;
+    const resetLabel = t.resetSpread || te.resetSpread;
+    const deleteLabel = t.deleteSpread || te.deleteSpread;
+
+    const actions = spread.isDefault
+        ? `<button class="spread-action-btn" data-action="edit" data-spread-id="${spread.id}">${editLabel}</button>
+           <button class="spread-action-btn" data-action="reset" data-spread-id="${spread.id}">${resetLabel}</button>`
+        : `<button class="spread-action-btn" data-action="edit" data-spread-id="${spread.id}">${editLabel}</button>
+           <button class="spread-action-btn spread-action-delete" data-action="delete" data-spread-id="${spread.id}">${deleteLabel}</button>`;
+
+    return `
+        <div class="spread-list-item" data-spread-id="${spread.id}">
+            <div class="spread-list-header">
+                <span class="spread-list-name">${name}</span>
+                <div class="spread-list-actions">${actions}</div>
+            </div>
+            <div class="spread-editor" id="editor-${spread.id}">
+                ${renderSpreadEditor(spread, t, te)}
+            </div>
+        </div>
+    `;
+}
+
+function renderSpreadEditor(spread, t, te) {
+    const posNameLabel = t.positionName || te.positionName;
+    const rowLabel = t.row || te.row;
+    const colLabel = t.col || te.col;
+    const saveLabel = t.save || te.save;
+    const addLabel = t.addPosition || te.addPosition;
+
+    if (spread.isDefault) {
+        const rows = spread.positions.map((pos, i) => `
+            <div class="position-editor-row">
+                <label>${posNameLabel} ${i + 1}</label>
+                <input type="text" class="pos-name-input" data-pos-index="${i}" value="${escapeHtml(pos.name)}" placeholder="${posNameLabel}">
+            </div>
+        `).join('');
+
+        return `
+            <div class="spread-editor-inner">
+                ${rows}
+                <button class="btn-save spread-editor-save" data-action="save-editor" data-spread-id="${spread.id}">${saveLabel}</button>
+            </div>
+        `;
+    } else {
+        const nameLabel = t.spreadName || te.spreadName;
+        const rows = spread.positions.map((pos, i) => `
+            <div class="position-editor-row" data-pos-index="${i}">
+                <input type="text" class="pos-name-input" data-pos-index="${i}" value="${escapeHtml(pos.name)}" placeholder="${posNameLabel}">
+                <input type="number" class="pos-row-input" data-pos-index="${i}" value="${pos.row || 1}" min="1" placeholder="${rowLabel}">
+                <input type="number" class="pos-col-input" data-pos-index="${i}" value="${pos.col || 1}" min="1" placeholder="${colLabel}">
+                <button class="spread-action-btn spread-action-delete" data-action="remove-position" data-spread-id="${spread.id}" data-pos-index="${i}">×</button>
+            </div>
+        `).join('');
+
+        return `
+            <div class="spread-editor-inner">
+                <div class="position-editor-row">
+                    <label>${nameLabel}</label>
+                    <input type="text" class="spread-name-input" value="${escapeHtml(spread.name)}">
+                </div>
+                <div class="position-editor-labels">
+                    <span></span><span>${posNameLabel}</span><span>${rowLabel}</span><span>${colLabel}</span><span></span>
+                </div>
+                ${rows}
+                <button class="spread-action-btn" data-action="add-position" data-spread-id="${spread.id}">${addLabel}</button>
+                <button class="btn-save spread-editor-save" data-action="save-editor" data-spread-id="${spread.id}">${saveLabel}</button>
+            </div>
+        `;
+    }
+}
+
+// Event delegation for spreads tab — set up once
+document.getElementById('tab-spreads').addEventListener('click', (e) => {
+    const btn = e.target.closest('[data-action]');
+    if (!btn) return;
+    const action = btn.dataset.action;
+    const spreadId = btn.dataset.spreadId;
+    const posIndex = btn.dataset.posIndex !== undefined ? parseInt(btn.dataset.posIndex) : null;
+    handleSpreadsTabAction(action, spreadId, posIndex);
+});
+
+function handleSpreadsTabAction(action, spreadId, posIndex) {
+    if (action === 'edit') {
+        const editor = document.getElementById(`editor-${spreadId}`);
+        if (editor) editor.classList.toggle('open');
+
+    } else if (action === 'reset') {
+        resetDefaultSpreadPositions(spreadId);
+
+    } else if (action === 'delete') {
+        const idx = userSpreads.findIndex(s => s.id === spreadId);
+        if (idx !== -1) {
+            userSpreads.splice(idx, 1);
+            saveUserSpreads();
+            rebuildSpreadDropdown();
+            if (currentSpreadType === spreadId) {
+                document.getElementById('spread-select').value = 'three';
+                handleSpreadSelection('three');
+            }
+            renderSpreadsTab();
+        }
+
+    } else if (action === 'save-editor') {
+        saveSpreadEditor(spreadId);
+
+    } else if (action === 'add-position') {
+        const spread = userSpreads.find(s => s.id === spreadId);
+        if (spread) {
+            const te = TRANSLATIONS.en;
+            const t = TRANSLATIONS[currentLanguage] || te;
+            const posLabel = t.positionName || te.positionName;
+            spread.positions.push({
+                name: `${posLabel} ${spread.positions.length + 1}`,
+                row: 1,
+                col: spread.positions.length + 1
+            });
+            saveUserSpreads();
+            renderSpreadsTab();
+            const editor = document.getElementById(`editor-${spreadId}`);
+            if (editor) editor.classList.add('open');
+        }
+
+    } else if (action === 'remove-position') {
+        const spread = userSpreads.find(s => s.id === spreadId);
+        if (spread && posIndex !== null && posIndex >= 0 && spread.positions.length > 1) {
+            spread.positions.splice(posIndex, 1);
+            saveUserSpreads();
+            renderSpreadsTab();
+            const editor = document.getElementById(`editor-${spreadId}`);
+            if (editor) editor.classList.add('open');
+        }
+    }
+}
+
+function saveSpreadEditor(spreadId) {
+    const spread = getSpreadById(spreadId);
+    if (!spread) return;
+    const editorEl = document.getElementById(`editor-${spreadId}`);
+    if (!editorEl) return;
+
+    if (spread.isDefault) {
+        const nameInputs = editorEl.querySelectorAll('.pos-name-input');
+        nameInputs.forEach((input, i) => {
+            if (spread.positions[i]) {
+                const val = input.value.trim();
+                if (val) spread.positions[i].name = val;
+            }
+        });
+        saveCustomPositions();
+    } else {
+        const nameInput = editorEl.querySelector('.spread-name-input');
+        if (nameInput && nameInput.value.trim()) spread.name = nameInput.value.trim();
+
+        const rows = editorEl.querySelectorAll('.position-editor-row[data-pos-index]');
+        rows.forEach((row) => {
+            const idx = parseInt(row.dataset.posIndex);
+            if (!isNaN(idx) && spread.positions[idx]) {
+                const ni = row.querySelector('.pos-name-input');
+                const ri = row.querySelector('.pos-row-input');
+                const ci = row.querySelector('.pos-col-input');
+                if (ni && ni.value.trim()) spread.positions[idx].name = ni.value.trim();
+                if (ri) spread.positions[idx].row = parseInt(ri.value) || 1;
+                if (ci) spread.positions[idx].col = parseInt(ci.value) || 1;
+            }
+        });
+        saveUserSpreads();
+        rebuildSpreadDropdown();
+    }
+
+    // Update live card labels if this spread is active
+    if (currentSpreadType === spreadId) {
+        const cardDisplay = document.getElementById('card-display');
+        const cards = cardDisplay.querySelectorAll('.tarot-card');
+        cards.forEach((card, index) => {
+            const pos = spread.positions[index];
+            if (pos) {
+                const backPos = card.querySelector('.card-back-position');
+                const frontPos = card.querySelector('.card-position');
+                if (backPos) backPos.textContent = pos.name;
+                if (frontPos) frontPos.textContent = pos.name;
+            }
+        });
+    }
+
+    const editor = document.getElementById(`editor-${spreadId}`);
+    if (editor) editor.classList.remove('open');
+    renderSpreadsTab();
+}
+
+function resetDefaultSpreadPositions(spreadId) {
+    const t = TRANSLATIONS[currentLanguage] || TRANSLATIONS.en;
+
+    if (spreadId === 'one') {
+        SPREADS.one.positions = [{ name: t.defaultPositions.one }];
+    } else if (spreadId === 'three') {
+        SPREADS.three.positions = t.defaultPositions.three.map(name => ({ name }));
+    } else if (spreadId === 'celtic') {
+        SPREADS.celtic.positions = t.defaultPositions.celtic.map(name => ({ name }));
+    }
+    saveCustomPositions();
+
+    if (currentSpreadType === spreadId) {
+        const spread = SPREADS[spreadId];
+        const cardDisplay = document.getElementById('card-display');
+        const cards = cardDisplay.querySelectorAll('.tarot-card');
+        cards.forEach((card, index) => {
+            const pos = spread.positions[index];
+            if (pos) {
+                const backPos = card.querySelector('.card-back-position');
+                const frontPos = card.querySelector('.card-position');
+                if (backPos) backPos.textContent = pos.name;
+                if (frontPos) frontPos.textContent = pos.name;
+            }
+        });
+    }
+    renderSpreadsTab();
+}
+
+function createUserSpread() {
+    const id = `usr_${Date.now()}`;
+    const t = TRANSLATIONS[currentLanguage] || TRANSLATIONS.en;
+    const te = TRANSLATIONS.en;
+    const posLabel = t.positionName || te.positionName;
+
+    const newSpread = {
+        id,
+        name: `My Spread ${userSpreads.length + 1}`,
+        isDefault: false,
+        positions: [
+            { name: `${posLabel} 1`, row: 1, col: 1 },
+            { name: `${posLabel} 2`, row: 1, col: 2 },
+            { name: `${posLabel} 3`, row: 1, col: 3 }
+        ]
+    };
+    userSpreads.push(newSpread);
+    saveUserSpreads();
+    rebuildSpreadDropdown();
+    renderSpreadsTab();
+    const editor = document.getElementById(`editor-${id}`);
+    if (editor) editor.classList.add('open');
+}
+
+document.getElementById('new-spread-btn').addEventListener('click', createUserSpread);
+
+// ---- URL Sharing ----
+
+function showToast(message) {
+    const toast = document.getElementById('copy-toast');
+    toast.textContent = message;
+    toast.classList.remove('hidden');
+    setTimeout(() => toast.classList.add('hidden'), 2500);
+}
+
+function handleShare() {
+    if (!currentArticles || !currentSpreadType) return;
+    const t = TRANSLATIONS[currentLanguage] || TRANSLATIONS.en;
+    const te = TRANSLATIONS.en;
+
+    const articleTitles = currentArticles.map(a => a.title).join('|');
+    const params = new URLSearchParams({
+        spread: currentSpreadType,
+        lang: currentLanguage,
+        articles: articleTitles
+    });
+
+    const spread = getSpreadById(currentSpreadType);
+    if (spread && !spread.isDefault) {
+        const spreadData = btoa(unescape(encodeURIComponent(JSON.stringify({ name: spread.name, positions: spread.positions }))));
+        params.set('spreadData', spreadData);
+    }
+
+    const url = `${window.location.origin}${window.location.pathname}?${params.toString()}`;
+
+    if (navigator.clipboard) {
+        navigator.clipboard.writeText(url).then(() => {
+            showToast(t.linkCopied || te.linkCopied);
+        }).catch(() => {
+            prompt('Copy this link:', url);
+        });
+    } else {
+        prompt('Copy this link:', url);
+    }
+}
+
+document.getElementById('share-btn').addEventListener('click', handleShare);
+
+function checkURLParams() {
+    const params = new URLSearchParams(window.location.search);
+    const spreadId = params.get('spread');
+    const lang = params.get('lang');
+    const articlesParam = params.get('articles');
+    const spreadDataParam = params.get('spreadData');
+
+    if (!spreadId || !articlesParam) return;
+
+    if (lang && LANGUAGES[lang]) {
+        currentLanguage = lang;
+        saveLanguagePreference();
+        updateUILanguage();
+    }
+
+    if (spreadDataParam) {
+        try {
+            const spreadData = JSON.parse(decodeURIComponent(escape(atob(spreadDataParam))));
+            const existing = getSpreadById(spreadId);
+            if (!existing) {
+                userSpreads.push({
+                    id: spreadId,
+                    name: spreadData.name,
+                    isDefault: false,
+                    positions: spreadData.positions
+                });
+                saveUserSpreads();
+                rebuildSpreadDropdown();
+            }
+        } catch (e) {
+            console.error('Failed to parse spreadData:', e);
+        }
+    }
+
+    const spread = getSpreadById(spreadId);
+    if (!spread) return;
+
+    const count = spread.count !== undefined ? spread.count : spread.positions.length;
+    const articles = articlesParam.split('|').map(title => ({ title }));
+    if (articles.length !== count) return;
+
+    currentSpreadType = spreadId;
+    currentArticles = articles;
+    const select = document.getElementById('spread-select');
+    if (select) select.value = spreadId;
+    saveLastSpread(spreadId);
+
+    renderSpreadRevealed(spreadId, articles);
+
+    const drawBtn = document.getElementById('draw-btn');
+    drawBtn.classList.remove('loading', 'hidden');
+    drawBtn.classList.add('drawn');
+
+    history.replaceState(null, '', window.location.pathname);
+}
+
+// ---- Article viewer ----
 
 function openArticleViewer(title, iframeUrl, externalUrl) {
-    articleTitle.textContent = title;
-    articleExternal.href = externalUrl;
-    articleIframe.src = iframeUrl;
-    articleViewer.classList.remove('hidden');
-    articleViewer.scrollIntoView({ behavior: 'smooth' });
+    document.getElementById('article-title').textContent = title;
+    document.getElementById('article-external').href = externalUrl;
+    document.getElementById('article-iframe').src = iframeUrl;
+    const viewer = document.getElementById('article-viewer');
+    viewer.classList.remove('hidden');
+    viewer.scrollIntoView({ behavior: 'smooth' });
 }
 
 function closeArticleViewer() {
-    articleViewer.classList.add('hidden');
-    articleIframe.src = '';
+    document.getElementById('article-viewer').classList.add('hidden');
+    document.getElementById('article-iframe').src = '';
 }
 
-articleClose.addEventListener('click', closeArticleViewer);
+document.getElementById('article-close').addEventListener('click', closeArticleViewer);
+
+// ---- Init sequence ----
+loadLanguagePreference();
+loadUserSpreads();
+migrateAndLoadPositions();
+updateUILanguage();
+rebuildSpreadDropdown();
+loadLastSpread();
+checkURLParams();
