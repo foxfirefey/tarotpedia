@@ -43,6 +43,7 @@ let showDisambiguation = false;            // Whether to include disambiguation 
 let currentSpreadType  = null;
 let currentArticles    = null;
 let userSpreads        = [];
+let fetchPromise       = null;             // Shared fetch promise; null means not yet started
 
 // ---- Utility ----
 
@@ -215,6 +216,84 @@ function rebuildSpreadDropdown() {
     }
 }
 
+// ---- Fetch lifecycle ----
+
+function resetFetch() {
+    fetchPromise   = null;
+    currentArticles = null;
+}
+
+// Idempotent: starts a fetch if one isn't already in flight; returns the shared promise.
+function startFetch() {
+    if (fetchPromise) return fetchPromise;
+    const spread = getSpreadById(currentSpreadType);
+    if (!spread) return Promise.reject(new Error('No spread'));
+    const count = spread.count !== undefined ? spread.count : spread.positions.length;
+    fetchPromise = fetchRandomArticles(count).then(articles => {
+        currentArticles = articles;
+        return articles;
+    }).catch(err => {
+        fetchPromise = null; // allow retry
+        throw err;
+    });
+    return fetchPromise;
+}
+
+// Populate the front face of an undrawn card with article data.
+function populateCardFront(card, article) {
+    const tr           = t();
+    const domain       = LANGUAGES[currentLanguage].domain;
+    const mobileDomain = domain.replace('wikipedia.org', 'm.wikipedia.org');
+    const articleUrl   = `https://${domain}/wiki/${encodeURIComponent(article.title)}`;
+    const mobileUrl    = `https://${mobileDomain}/wiki/${encodeURIComponent(article.title)}`;
+
+    card.querySelector('.card-title').textContent = article.title;
+    const link = card.querySelector('.card-link');
+    link.textContent = tr.readArticle;
+    link.href = articleUrl;
+    link.addEventListener('click', (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        openArticleViewer(article.title, mobileUrl, articleUrl);
+    });
+}
+
+// Called after each card reveal to check whether every card is now showing.
+function checkAllRevealed() {
+    const cards = [...document.querySelectorAll('#card-display .tarot-card')];
+    if (cards.length === 0) return;
+    if (!cards.every(c => c.classList.contains('revealed'))) return;
+    document.getElementById('draw-btn').classList.remove('loading');
+    document.getElementById('draw-btn').classList.add('drawn');
+    document.getElementById('share-btn').classList.remove('hidden');
+}
+
+// Click handler attached to each undrawn card.
+async function handleCardClick(card, index) {
+    if (card.classList.contains('revealed')) return;
+
+    const drawBtn      = document.getElementById('draw-btn');
+    const isFirstFetch = fetchPromise === null;
+
+    if (isFirstFetch) {
+        drawBtn.classList.add('loading');
+        drawBtn.classList.remove('drawn');
+        document.getElementById('share-btn').classList.add('hidden');
+    }
+
+    try {
+        const articles = await startFetch();
+        if (isFirstFetch) drawBtn.classList.remove('loading');
+        populateCardFront(card, articles[index]);
+        card.classList.add('revealed');
+        checkAllRevealed();
+    } catch (error) {
+        console.error('Error fetching articles:', error);
+        if (isFirstFetch) drawBtn.classList.remove('loading');
+        showError();
+    }
+}
+
 // ---- Card creation ----
 
 function computeUserSpreadGrid(positions) {
@@ -245,6 +324,7 @@ function createUndrawnCard(position, index) {
             </div>
         </div>
     `;
+    card.addEventListener('click', () => handleCardClick(card, index));
     return card;
 }
 
@@ -380,7 +460,7 @@ async function fetchRandomArticles(count) {
 
 function handleSpreadSelection(spreadId) {
     currentSpreadType = spreadId;
-    currentArticles   = null;
+    resetFetch();
     saveLastSpread(spreadId);
     document.getElementById('share-btn').classList.add('hidden');
 
@@ -404,21 +484,47 @@ async function handleDraw() {
     const spread = getSpreadById(currentSpreadType);
     if (!spread) return;
 
-    const count    = spread.count !== undefined ? spread.count : spread.positions.length;
-    const drawBtn  = document.getElementById('draw-btn');
-    const shareBtn = document.getElementById('share-btn');
+    const drawBtn     = document.getElementById('draw-btn');
+    const shareBtn    = document.getElementById('share-btn');
+    const cardDisplay = document.getElementById('card-display');
+
+    // If every card is already revealed, reset and start a brand-new draw.
+    const existingCards = [...cardDisplay.querySelectorAll('.tarot-card')];
+    if (existingCards.length > 0 && existingCards.every(c => c.classList.contains('revealed'))) {
+        resetFetch();
+        shareBtn.classList.add('hidden');
+        renderUndrawnSpread(currentSpreadType);
+    }
 
     drawBtn.classList.add('loading');
     drawBtn.classList.remove('drawn');
     shareBtn.classList.add('hidden');
 
     try {
-        const articles = await fetchRandomArticles(count);
-        currentArticles = articles;
-        renderSpread(currentSpreadType, articles, () => {
+        const articles = await startFetch();
+
+        // Reveal all cards that haven't been flipped yet, in position order.
+        const unrevealed = [...cardDisplay.querySelectorAll('.tarot-card:not(.revealed)')];
+
+        if (unrevealed.length === 0) {
             drawBtn.classList.remove('loading');
             drawBtn.classList.add('drawn');
             shareBtn.classList.remove('hidden');
+            return;
+        }
+
+        unrevealed.forEach((card, i) => {
+            const posIndex = parseInt(card.dataset.position) - 1;
+            const isLast   = i === unrevealed.length - 1;
+            setTimeout(() => {
+                populateCardFront(card, articles[posIndex]);
+                card.classList.add('revealed');
+                if (isLast) {
+                    drawBtn.classList.remove('loading');
+                    drawBtn.classList.add('drawn');
+                    shareBtn.classList.remove('hidden');
+                }
+            }, i * 300);
         });
     } catch (error) {
         console.error('Error fetching articles:', error);
