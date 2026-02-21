@@ -904,45 +904,69 @@ function handleDownload() {
 document.getElementById('download-btn').addEventListener('click', handleDownload);
 
 function checkURLParams() {
-    const params        = new URLSearchParams(window.location.search);
-    const spreadId      = params.get('spread');
-    const lang          = params.get('lang');
-    const ui            = params.get('ui');
-    const articlesParam = params.get('articles');
+    const params          = new URLSearchParams(window.location.search);
+    const spreadId        = params.get('spread');
+    const lang            = params.get('lang');
+    const ui              = params.get('ui');
+    const articlesParam   = params.get('articles');
     const spreadDataParam = params.get('spreadData');
 
     if (!spreadId || !articlesParam) return;
 
-    if (lang && LANGUAGES[lang])      { currentLanguage = lang; saveLanguagePreference(); }
-    if (ui   && TRANSLATIONS[ui])     { uiLanguage = ui;        saveUILanguagePreference(); }
-    if (lang || ui)                   updateUILanguage();
-
-    if (spreadDataParam) {
+    // Pre-parse custom spread data to validate without committing to userSpreads yet
+    let customSpreadData = null;
+    if (spreadDataParam && !getSpreadById(spreadId)) {
         try {
-            const data = JSON.parse(decodeURIComponent(escape(atob(spreadDataParam))));
-            if (!getSpreadById(spreadId)) {
-                userSpreads.push({ id: spreadId, name: data.name, isDefault: false, positions: data.positions });
-                saveUserSpreads();
-                rebuildSpreadDropdown();
-            }
-        } catch (e) { console.error('Failed to parse spreadData:', e); }
+            customSpreadData = JSON.parse(decodeURIComponent(escape(atob(spreadDataParam))));
+        } catch (e) { console.error('Failed to parse spreadData:', e); return; }
     }
 
-    const spread = getSpreadById(spreadId);
+    const spread = customSpreadData
+        ? { id: spreadId, name: customSpreadData.name, isDefault: false, positions: customSpreadData.positions }
+        : getSpreadById(spreadId);
     if (!spread) return;
 
     const count    = spread.count !== undefined ? spread.count : spread.positions.length;
     const articles = articlesParam.split('|').map(title => ({ title }));
     if (articles.length !== count) return;
 
-    currentSpreadType = spreadId;
-    currentArticles   = articles;
-    const select = document.getElementById('spread-select');
-    if (select) select.value = spreadId;
-    saveLastSpread(spreadId);
+    // Show confirmation modal in the user's current UI language
+    const tr = t();
+    document.getElementById('share-confirm-title').textContent   = tr.sharedLinkTitle;
+    document.getElementById('share-confirm-message').textContent = tr.sharedLinkMessage;
+    document.getElementById('share-confirm-yes').textContent     = tr.sharedLinkYes;
+    document.getElementById('share-confirm-no').textContent      = tr.sharedLinkNo;
 
-    renderSpreadRevealed(spreadId, articles);
-    history.replaceState(null, '', window.location.pathname);
+    const modal = document.getElementById('share-confirm-modal');
+    modal.classList.remove('hidden');
+
+    document.getElementById('share-confirm-yes').onclick = () => {
+        modal.classList.add('hidden');
+
+        if (lang && LANGUAGES[lang])  { currentLanguage = lang; saveLanguagePreference(); }
+        if (ui   && TRANSLATIONS[ui]) { uiLanguage = ui;        saveUILanguagePreference(); }
+        if (lang || ui)               updateUILanguage();
+
+        if (customSpreadData && !getSpreadById(spreadId)) {
+            userSpreads.push({ id: spreadId, name: customSpreadData.name, isDefault: false, positions: customSpreadData.positions });
+            saveUserSpreads();
+            rebuildSpreadDropdown();
+        }
+
+        currentSpreadType = spreadId;
+        currentArticles   = articles;
+        const select = document.getElementById('spread-select');
+        if (select) select.value = spreadId;
+        saveLastSpread(spreadId);
+
+        renderSpreadRevealed(spreadId, articles);
+        history.replaceState(null, '', window.location.pathname);
+    };
+
+    document.getElementById('share-confirm-no').onclick = () => {
+        modal.classList.add('hidden');
+        history.replaceState(null, '', window.location.pathname);
+    };
 }
 
 // ---- Reading modal ----
