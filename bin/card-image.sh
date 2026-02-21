@@ -27,11 +27,11 @@ magick "$SCRATCH/card3.png" -resize 220x330 "$SCRATCH/c3.png"
 magick "$SCRATCH/card4.png" -resize 220x330 "$SCRATCH/c4.png"
 
 # Composite all cards
-magick "Hubble_HH80_new_4Filters_V7_FINALcrop.jpg" \
+magick "img/Hubble_HH80_new_4Filters_V7_FINALcrop.jpg" \
   -resize 1200x630^ -gravity center -extent 1200x630 \
   "$SCRATCH/result.png"
 
 magick "$SCRATCH/result.png" "$SCRATCH/c1.png" -gravity northwest -geometry +115+150 -composite "$SCRATCH/result.png"
 magick "$SCRATCH/result.png" "$SCRATCH/c2.png" -gravity northwest -geometry +365+150 -composite "$SCRATCH/result.png"
 magick "$SCRATCH/result.png" "$SCRATCH/c3.png" -gravity northwest -geometry +615+150 -composite "$SCRATCH/result.png"
-magick "$SCRATCH/result.png" "$SCRATCH/c4.png" -gravity northwest -geometry +865+150 -composite card-image.png
+magick "$SCRATCH/result.png" "$SCRATCH/c4.png" -gravity northwest -geometry +865+150 -composite img/card-image.png

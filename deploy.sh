@@ -19,13 +19,13 @@ if [ -f "index.html" ]; then
 fi
 
 # Update APP_VERSION constant in app.js
-if [ -f "app.js" ]; then
-    sed -i '' "s/const APP_VERSION = '[^']*'/const APP_VERSION = '$VERSION'/" app.js
-    echo "✅ Updated APP_VERSION in app.js"
+if [ -f "js/app.js" ]; then
+    sed -i '' "s/const APP_VERSION = '[^']*'/const APP_VERSION = '$VERSION'/" js/app.js
+    echo "✅ Updated APP_VERSION in js/app.js"
 fi
 
 # Stage the updated files
-git add index.html app.js
+git add index.html js/app.js
 
 echo "✨ Version update complete!"
 echo ""

@@ -6,7 +6,7 @@
 
 body {
     font-family: 'Georgia', serif;
-    background: #000 url('Hubble_HH80_new_4Filters_V7_FINALcrop.jpg') center center / cover no-repeat fixed;
+    background: #000 url('../img/Hubble_HH80_new_4Filters_V7_FINALcrop.jpg') center center / cover no-repeat fixed;
     min-height: 100vh;
     color: #e8e8e8;
     position: relative;
