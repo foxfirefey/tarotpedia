@@ -11,6 +11,8 @@ echo "🚀 Deploying with version: $VERSION"
 if [ -f "index.html" ]; then
     # Update styles.css version
     sed -i '' "s/styles\.css?v=[^\"']*/styles.css?v=$VERSION/" index.html
+    # Update lang.js version
+    sed -i '' "s/lang\.js?v=[^\"']*/lang.js?v=$VERSION/" index.html
     # Update app.js version
     sed -i '' "s/app\.js?v=[^\"']*/app.js?v=$VERSION/" index.html
     echo "✅ Updated index.html asset versions"
