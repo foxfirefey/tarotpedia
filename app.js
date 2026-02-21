@@ -266,6 +266,7 @@ function checkAllRevealed() {
     document.getElementById('draw-btn').classList.remove('loading');
     document.getElementById('draw-btn').classList.add('drawn');
     document.getElementById('share-btn').classList.remove('hidden');
+    document.getElementById('download-btn').classList.remove('hidden');
 }
 
 // Click handler attached to each undrawn card.
@@ -279,6 +280,7 @@ async function handleCardClick(card, index) {
         drawBtn.classList.add('loading');
         drawBtn.classList.remove('drawn');
         document.getElementById('share-btn').classList.add('hidden');
+        document.getElementById('download-btn').classList.add('hidden');
     }
 
     try {
@@ -422,6 +424,7 @@ function renderSpreadRevealed(id, articles) {
         cardDisplay.appendChild(card);
     });
     document.getElementById('share-btn').classList.remove('hidden');
+    document.getElementById('download-btn').classList.remove('hidden');
 }
 
 function showError(message) {
@@ -463,6 +466,7 @@ function handleSpreadSelection(spreadId) {
     resetFetch();
     saveLastSpread(spreadId);
     document.getElementById('share-btn').classList.add('hidden');
+    document.getElementById('download-btn').classList.add('hidden');
 
     const viewer = document.getElementById('article-viewer');
     if (viewer) {
@@ -486,6 +490,7 @@ async function handleDraw() {
 
     const drawBtn     = document.getElementById('draw-btn');
     const shareBtn    = document.getElementById('share-btn');
+    const downloadBtn = document.getElementById('download-btn');
     const cardDisplay = document.getElementById('card-display');
 
     // If every card is already revealed, reset and start a brand-new draw.
@@ -493,12 +498,14 @@ async function handleDraw() {
     if (existingCards.length > 0 && existingCards.every(c => c.classList.contains('revealed'))) {
         resetFetch();
         shareBtn.classList.add('hidden');
+        downloadBtn.classList.add('hidden');
         renderUndrawnSpread(currentSpreadType);
     }
 
     drawBtn.classList.add('loading');
     drawBtn.classList.remove('drawn');
     shareBtn.classList.add('hidden');
+    downloadBtn.classList.add('hidden');
 
     try {
         const articles = await startFetch();
@@ -510,6 +517,7 @@ async function handleDraw() {
             drawBtn.classList.remove('loading');
             drawBtn.classList.add('drawn');
             shareBtn.classList.remove('hidden');
+            downloadBtn.classList.remove('hidden');
             return;
         }
 
@@ -523,6 +531,7 @@ async function handleDraw() {
                     drawBtn.classList.remove('loading');
                     drawBtn.classList.add('drawn');
                     shareBtn.classList.remove('hidden');
+                    downloadBtn.classList.remove('hidden');
                 }
             }, i * 300);
         });
@@ -845,6 +854,45 @@ function handleShare() {
 }
 
 document.getElementById('share-btn').addEventListener('click', handleShare);
+
+function handleDownload() {
+    if (!currentArticles || !currentSpreadType) return;
+    const spread = getSpreadById(currentSpreadType);
+    if (!spread) return;
+
+    const domain = LANGUAGES[currentLanguage].domain;
+    const q = f => `"${String(f).replace(/"/g, '""')}"`;
+
+    const header = [q('Position'), q('Position Name'), q('Article'), q('Link')].join(',');
+    const dataRows = currentArticles.map((article, i) => {
+        const posName = spread.positions[i]?.name || '';
+        const url = `https://${domain}/wiki/${encodeURIComponent(article.title)}`;
+        return [q(i + 1), q(posName), q(article.title), q(url)].join(',');
+    });
+
+    const spreadSlug = getSpreadDisplayName(spread)
+        .toLowerCase()
+        .replace(/[^a-z0-9]+/g, '_')
+        .replace(/^_|_$/g, '');
+    const now = new Date();
+    const ts  = now.getFullYear()
+        + String(now.getMonth() + 1).padStart(2, '0')
+        + String(now.getDate()).padStart(2, '0')
+        + '_'
+        + String(now.getHours()).padStart(2, '0')
+        + String(now.getMinutes()).padStart(2, '0')
+        + String(now.getSeconds()).padStart(2, '0');
+
+    const csv  = [header, ...dataRows].join('\n');
+    const blob = new Blob([csv], { type: 'text/csv' });
+    const a    = document.createElement('a');
+    a.href     = URL.createObjectURL(blob);
+    a.download = `tarotpedia-${spreadSlug}-${ts}.csv`;
+    a.click();
+    URL.revokeObjectURL(a.href);
+}
+
+document.getElementById('download-btn').addEventListener('click', handleDownload);
 
 function checkURLParams() {
     const params        = new URLSearchParams(window.location.search);
