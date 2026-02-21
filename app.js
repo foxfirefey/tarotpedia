@@ -264,9 +264,8 @@ function checkAllRevealed() {
     if (cards.length === 0) return;
     if (!cards.every(c => c.classList.contains('revealed'))) return;
     document.getElementById('draw-btn').classList.remove('loading');
-    document.getElementById('draw-btn').classList.add('drawn');
-    document.getElementById('share-btn').classList.remove('hidden');
-    document.getElementById('download-btn').classList.remove('hidden');
+    document.getElementById('share-btn').disabled = false;
+    document.getElementById('download-btn').disabled = false;
 }
 
 // Click handler attached to each undrawn card.
@@ -278,9 +277,8 @@ async function handleCardClick(card, index) {
 
     if (isFirstFetch) {
         drawBtn.classList.add('loading');
-        drawBtn.classList.remove('drawn');
-        document.getElementById('share-btn').classList.add('hidden');
-        document.getElementById('download-btn').classList.add('hidden');
+        document.getElementById('share-btn').disabled = true;
+        document.getElementById('download-btn').disabled = true;
     }
 
     try {
@@ -423,8 +421,8 @@ function renderSpreadRevealed(id, articles) {
         card.classList.add('revealed');
         cardDisplay.appendChild(card);
     });
-    document.getElementById('share-btn').classList.remove('hidden');
-    document.getElementById('download-btn').classList.remove('hidden');
+    document.getElementById('share-btn').disabled = false;
+    document.getElementById('download-btn').disabled = false;
 }
 
 function showError(message) {
@@ -465,8 +463,8 @@ function handleSpreadSelection(spreadId) {
     currentSpreadType = spreadId;
     resetFetch();
     saveLastSpread(spreadId);
-    document.getElementById('share-btn').classList.add('hidden');
-    document.getElementById('download-btn').classList.add('hidden');
+    document.getElementById('share-btn').disabled = true;
+    document.getElementById('download-btn').disabled = true;
 
     const viewer = document.getElementById('article-viewer');
     if (viewer) {
@@ -475,7 +473,7 @@ function handleSpreadSelection(spreadId) {
         if (iframe) iframe.src = '';
     }
 
-    document.getElementById('draw-btn').classList.remove('loading', 'drawn');
+    document.getElementById('draw-btn').classList.remove('loading');
     renderUndrawnSpread(spreadId);
 }
 
@@ -497,15 +495,14 @@ async function handleDraw() {
     const existingCards = [...cardDisplay.querySelectorAll('.tarot-card')];
     if (existingCards.length > 0 && existingCards.every(c => c.classList.contains('revealed'))) {
         resetFetch();
-        shareBtn.classList.add('hidden');
-        downloadBtn.classList.add('hidden');
+        shareBtn.disabled = true;
+        downloadBtn.disabled = true;
         renderUndrawnSpread(currentSpreadType);
     }
 
     drawBtn.classList.add('loading');
-    drawBtn.classList.remove('drawn');
-    shareBtn.classList.add('hidden');
-    downloadBtn.classList.add('hidden');
+    shareBtn.disabled = true;
+    downloadBtn.disabled = true;
 
     try {
         const articles = await startFetch();
@@ -515,9 +512,8 @@ async function handleDraw() {
 
         if (unrevealed.length === 0) {
             drawBtn.classList.remove('loading');
-            drawBtn.classList.add('drawn');
-            shareBtn.classList.remove('hidden');
-            downloadBtn.classList.remove('hidden');
+            shareBtn.disabled = false;
+            downloadBtn.disabled = false;
             return;
         }
 
@@ -529,9 +525,8 @@ async function handleDraw() {
                 card.classList.add('revealed');
                 if (isLast) {
                     drawBtn.classList.remove('loading');
-                    drawBtn.classList.add('drawn');
-                    shareBtn.classList.remove('hidden');
-                    downloadBtn.classList.remove('hidden');
+                    shareBtn.disabled = false;
+                    downloadBtn.disabled = false;
                 }
             }, i * 300);
         });
@@ -933,10 +928,6 @@ function checkURLParams() {
     saveLastSpread(spreadId);
 
     renderSpreadRevealed(spreadId, articles);
-    const drawBtn = document.getElementById('draw-btn');
-    drawBtn.classList.remove('loading', 'hidden');
-    drawBtn.classList.add('drawn');
-
     history.replaceState(null, '', window.location.pathname);
 }
 
