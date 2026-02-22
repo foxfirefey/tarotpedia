@@ -6,6 +6,10 @@
     box-sizing: border-box;
 }
 
+.hidden {
+    display: none !important;
+}
+
 body {
     min-height: 100vh;
     position: relative;
@@ -115,10 +119,6 @@ main {
     color: $text-light;
 }
 
-.spread-select optgroup.hidden {
-    display: none;
-}
-
 /* Draw button */
 .draw-btn {
     display: inline-flex;
@@ -165,8 +165,8 @@ main {
     to { transform: rotate(360deg); }
 }
 
-/* Share button */
-.share-btn {
+/* Icon buttons (settings, share, download, reading) */
+.settings-btn, .share-btn {
     background: transparent;
     border: 2px solid rgba($primary, 0.5);
     color: $primary;
@@ -177,12 +177,20 @@ main {
     display: flex;
     align-items: center;
     justify-content: center;
+
+    &:hover {
+        border-color: $primary;
+        box-shadow: 0 0 15px rgba($primary, 0.4);
+        transform: translateY(-2px);
+    }
 }
 
-.share-btn:hover {
-    border-color: $primary;
-    box-shadow: 0 0 15px rgba($primary, 0.4);
-    transform: translateY(-2px);
+.settings-btn svg {
+    transition: transform 0.3s ease;
+}
+
+.settings-btn:hover svg {
+    transform: rotate(45deg);
 }
 
 .share-btn:disabled {
@@ -208,10 +216,6 @@ main {
     transition: opacity 0.3s ease;
 }
 
-.copy-toast.hidden {
-    display: none;
-}
-
 /* Reading display */
 .reading-display {
     text-align: center;
@@ -226,12 +230,7 @@ main {
     margin: 0 auto 1.5rem;
 }
 
-.reading-display.hidden {
-    display: none;
-}
-
 /* Reading modal */
-
 .reading-textarea {
     width: 100%;
     background: rgba(0, 0, 0, 0.5);
@@ -267,16 +266,6 @@ main {
     justify-content: center;
     gap: 1.5rem;
     padding: 1rem;
-}
-
-/* One Card Layout */
-.card-display.one-card {
-    justify-content: center;
-}
-
-/* Three Card Layout */
-.card-display.three-card {
-    justify-content: center;
 }
 
 /* User spread layout */
@@ -324,25 +313,30 @@ main {
     backface-visibility: hidden;
     border-radius: 12px;
     overflow: hidden;
+    border: 3px solid $primary;
+    display: flex;
+    flex-direction: column;
+    padding: 1rem;
 }
 
 .card-back {
     background: $panel-gradient;
-    border: 3px solid $primary;
-    display: flex;
-    flex-direction: column;
     align-items: center;
     justify-content: center;
-    padding: 1rem;
 }
 
-.card-back-position {
+.card-back-position, .card-position {
     color: $primary;
     font-size: 0.75rem;
     text-transform: uppercase;
     letter-spacing: 0.1em;
     text-align: center;
     margin-bottom: 0.5rem;
+}
+
+.card-position {
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid rgba($primary, 0.3);
 }
 
 .card-back-design {
@@ -363,50 +357,7 @@ main {
 
 .card-front {
     background: $card-front-gradient;
-    border: 3px solid $primary;
     transform: rotateY(180deg);
-    display: flex;
-    flex-direction: column;
-    padding: 1rem;
-}
-
-.card-position {
-    text-align: center;
-    color: $primary;
-    font-size: 0.75rem;
-    text-transform: uppercase;
-    letter-spacing: 0.1em;
-    margin-bottom: 0.5rem;
-    padding-bottom: 0.5rem;
-    border-bottom: 1px solid rgba($primary, 0.3);
-}
-
-/* Settings button */
-.settings-btn {
-    background: transparent;
-    border: 2px solid rgba($primary, 0.5);
-    color: $primary;
-    padding: 0.75rem;
-    cursor: pointer;
-    border-radius: 8px;
-    transition: all 0.3s ease;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.settings-btn:hover {
-    border-color: $primary;
-    box-shadow: 0 0 15px rgba($primary, 0.4);
-    transform: translateY(-2px);
-}
-
-.settings-btn svg {
-    transition: transform 0.3s ease;
-}
-
-.settings-btn:hover svg {
-    transform: rotate(45deg);
 }
 
 /* Modal */
@@ -422,10 +373,6 @@ main {
     justify-content: center;
     z-index: 100;
     backdrop-filter: blur(4px);
-}
-
-.modal.hidden {
-    display: none;
 }
 
 .modal-content {
@@ -456,7 +403,7 @@ main {
     margin: 0;
 }
 
-.modal-close {
+.modal-close, .article-close {
     background: none;
     border: none;
     color: $primary;
@@ -465,10 +412,10 @@ main {
     padding: 0;
     line-height: 1;
     transition: transform 0.2s ease;
-}
 
-.modal-close:hover {
-    transform: scale(1.2);
+    &:hover {
+        transform: scale(1.2);
+    }
 }
 
 /* Modal tabs */
@@ -521,32 +468,10 @@ main {
     white-space: nowrap;
 }
 
-.download-filename-row input {
-    flex: 1;
-    background: rgba(0, 0, 0, 0.5);
-    border: 1px solid rgba($primary, 0.5);
-    color: $text-light;
-    padding: 0.5rem 0.75rem;
-    font-size: 0.9rem;
-    font-family: inherit;
-    border-radius: 6px;
-    outline: none;
-    transition: border-color 0.2s ease, box-shadow 0.2s ease;
-}
-
-.download-filename-row input:focus {
-    border-color: $primary;
-    box-shadow: 0 0 0 2px rgba($primary, 0.2);
-}
-
 .download-format-body {
     display: flex;
     gap: 0.75rem;
     justify-content: center;
-}
-
-.tab-panel.hidden {
-    display: none;
 }
 
 .settings-section {
@@ -579,7 +504,8 @@ main {
 }
 
 .setting-row input,
-.setting-row select {
+.setting-row select,
+.download-filename-row input {
     flex: 1;
     background: rgba(0, 0, 0, 0.5);
     border: 1px solid rgba($primary, 0.5);
@@ -613,6 +539,11 @@ main {
     box-shadow: 0 0 8px rgba($primary, 0.3);
 }
 
+.download-filename-row input:focus {
+    border-color: $primary;
+    box-shadow: 0 0 0 2px rgba($primary, 0.2);
+}
+
 .setting-row input[type="checkbox"] {
     width: 1.1rem;
     height: 1.1rem;
@@ -632,10 +563,6 @@ main {
     padding: 1rem 1.5rem;
     border-top: 1px solid rgba($primary, 0.3);
     flex-shrink: 0;
-}
-
-.modal-footer.hidden {
-    display: none;
 }
 
 .btn-reset, .btn-save {
@@ -774,42 +701,37 @@ main {
 .position-editor-labels span:nth-child(4) { width: 50px; flex-shrink: 0; }
 .position-editor-labels span:nth-child(5) { width: 24px; flex-shrink: 0; }
 
-.pos-name-input {
-    flex: 1;
+/* Editor inputs (shared base) */
+.pos-name-input,
+.pos-row-input,
+.pos-col-input,
+.spread-name-input {
     background: rgba(0, 0, 0, 0.5);
     border: 1px solid rgba($primary, 0.4);
     color: $text-light;
-    padding: 0.35rem 0.5rem;
-    font-size: 0.8rem;
     font-family: inherit;
     border-radius: 4px;
     outline: none;
+}
+
+.pos-name-input {
+    flex: 1;
+    padding: 0.35rem 0.5rem;
+    font-size: 0.8rem;
 }
 
 .pos-row-input,
 .pos-col-input {
     width: 50px;
     flex-shrink: 0;
-    background: rgba(0, 0, 0, 0.5);
-    border: 1px solid rgba($primary, 0.4);
-    color: $text-light;
     padding: 0.35rem 0.4rem;
     font-size: 0.8rem;
-    font-family: inherit;
-    border-radius: 4px;
-    outline: none;
 }
 
 .spread-name-input {
     flex: 1;
-    background: rgba(0, 0, 0, 0.5);
-    border: 1px solid rgba($primary, 0.4);
-    color: $text-light;
     padding: 0.35rem 0.5rem;
     font-size: 0.85rem;
-    font-family: inherit;
-    border-radius: 4px;
-    outline: none;
 }
 
 .pos-name-input:focus,
@@ -930,10 +852,6 @@ main {
     background: $dark-bg;
 }
 
-.article-viewer.hidden {
-    display: none;
-}
-
 .article-header {
     display: flex;
     justify-content: space-between;
@@ -969,21 +887,6 @@ main {
 
 .article-external-link:hover {
     color: $primary;
-}
-
-.article-close {
-    background: none;
-    border: none;
-    color: $primary;
-    font-size: 1.5rem;
-    cursor: pointer;
-    padding: 0;
-    line-height: 1;
-    transition: transform 0.2s ease;
-}
-
-.article-close:hover {
-    transform: scale(1.2);
 }
 
 .article-iframe {
