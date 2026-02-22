@@ -859,6 +859,8 @@ function handleShare() {
         v:        APP_VERSION
     });
 
+    if (currentReading) params.set('reading', currentReading);
+
     const spread = getSpreadById(currentSpreadType);
     if (spread && !spread.isDefault) {
         params.set('spreadData', btoa(unescape(encodeURIComponent(
@@ -980,6 +982,7 @@ function checkURLParams() {
     const ui              = params.get('ui');
     const articlesParam   = params.get('articles');
     const spreadDataParam = params.get('spreadData');
+    const readingParam    = params.get('reading');
 
     if (!spreadId || !articlesParam) return;
 
@@ -1016,6 +1019,11 @@ function checkURLParams() {
         const select = document.getElementById('spread-select');
         if (select) select.value = spreadId;
         saveLastSpread(spreadId);
+
+        if (readingParam) {
+            currentReading = readingParam;
+            renderReadingDisplay();
+        }
 
         renderSpreadRevealed(spreadId, articles);
         history.replaceState(null, '', window.location.pathname);
