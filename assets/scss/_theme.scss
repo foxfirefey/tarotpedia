@@ -1,0 +1,49 @@
+// =============================================================================
+// _theme.scss — Brand colors, gradients, fonts, and purely decorative rules
+// =============================================================================
+
+// Brand colors
+$primary:        #e056a0; // magenta — buttons, borders, accents
+$secondary:      #c0a0c0; // muted purple — secondary text, borders
+$dark-bg:        #0d050d; // near-black background
+$mid-dark-bg:    #1a0a1a; // panel dark background
+$deep-purple:    #2a1a2e; // deep purple — gradient start
+$text-light:     #e8e8e8; // body text
+$error-color:    #ff6b6b; // error messages
+$delete-color:   #ff5050; // delete buttons
+$delete-hover:   #ff8080; // delete button hover
+$btn-save-hover: #f066b0; // save button hover
+
+// Background
+$bg-image: url('../img/Hubble_HH80_new_4Filters_V7_FINALcrop.jpg');
+
+// Gradients
+$panel-gradient:      linear-gradient(145deg, $deep-purple, $mid-dark-bg);
+$card-front-gradient: linear-gradient(145deg, $mid-dark-bg, $dark-bg);
+
+// Fonts
+$decorative-font: 'Cinzel Decorative', Georgia, serif;
+$body-font:       Georgia, serif;
+
+// =============================================================================
+// Purely decorative rules — theme values only, no layout properties
+// =============================================================================
+
+body {
+    font-family: $body-font;
+    background: #000 $bg-image center center / cover no-repeat fixed;
+    color: $text-light;
+}
+
+/* Dark overlay for readability */
+body::before {
+    background: rgba(0, 0, 0, 0.5);
+}
+
+/* Card back diagonal stripe pattern */
+.card-back-design {
+    background:
+        linear-gradient(45deg, transparent 48%, rgba($primary, 0.3) 49%, rgba($primary, 0.3) 51%, transparent 52%),
+        linear-gradient(-45deg, transparent 48%, rgba($primary, 0.3) 49%, rgba($primary, 0.3) 51%, transparent 52%);
+    background-size: 20px 20px;
+}

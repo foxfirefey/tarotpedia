@@ -11,6 +11,10 @@ echo "🚀 Deploying with version: $VERSION"
 echo "🔧 Compiling lang.js..."
 python3 bin/compile_lang.py || { echo "❌ lang.js compilation failed"; exit 1; }
 
+# Compile SASS
+echo "🎨 Compiling SASS..."
+sass assets/scss/styles.scss static/css/styles.css || { echo "❌ SASS compilation failed"; exit 1; }
+
 # Update version in index.html
 if [ -f "index.html" ]; then
     # Update styles.css version
@@ -29,7 +33,7 @@ if [ -f "js/app.js" ]; then
 fi
 
 # Stage the updated files
-git add index.html js/app.js js/lang.js
+git add index.html static/js/app.js static/js/lang.js
 
 echo "✨ Version update complete!"
 echo ""

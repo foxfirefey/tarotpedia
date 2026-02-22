@@ -1,6 +1,6 @@
 // LANGUAGES, DEFAULT_LANGUAGE, TRANSLATIONS are defined in lang.js
 
-const APP_VERSION = '5dfce17';
+const APP_VERSION = '7c60ee0';
 
 // Spread configurations — positions are { name } objects
 const SPREADS = {

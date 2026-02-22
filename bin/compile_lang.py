@@ -10,8 +10,8 @@ import os
 import sys
 
 BASE = os.path.join(os.path.dirname(__file__), '..')
-LANG_DIR = os.path.join(BASE, 'lang')
-OUTPUT = os.path.join(BASE, 'js', 'lang.js')
+LANG_DIR = os.path.join(BASE, 'assets', 'lang')
+OUTPUT = os.path.join(BASE, 'static', 'js', 'lang.js')
 
 
 def read_tsv(path):
