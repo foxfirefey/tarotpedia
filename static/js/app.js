@@ -48,6 +48,7 @@ let currentArticles    = null;
 let currentReading    = '';
 let userSpreads        = [];
 let fetchPromise       = null;             // Shared fetch promise; null means not yet started
+let themePreference    = 'auto';
 
 // ---- Utility ----
 
@@ -120,6 +121,21 @@ function saveWarnLinksPreference() {
     localStorage.setItem('wikitarot-warn-links', warnBeforeLinks);
 }
 
+function loadThemePreference() {
+    const saved = localStorage.getItem('wikitarot-theme');
+    themePreference = ['auto', 'light', 'dark'].includes(saved) ? saved : 'auto';
+}
+function saveThemePreference() {
+    localStorage.setItem('wikitarot-theme', themePreference);
+}
+function applyTheme() {
+    if (themePreference === 'auto') {
+        document.documentElement.removeAttribute('data-theme');
+    } else {
+        document.documentElement.setAttribute('data-theme', themePreference);
+    }
+}
+
 function loadUserSpreads() {
     const saved = localStorage.getItem('wikitarot-spreads');
     if (saved) {
@@ -179,6 +195,8 @@ function updateUILanguage() {
     document.querySelector('label[for="ui-language-select"]').textContent        = tr.interfaceLanguage;
     document.querySelector('label[for="language-select"]').textContent           = tr.articleLanguage;
     document.getElementById('section-articles').textContent                      = tr.articlesSection;
+    document.getElementById('section-appearance').textContent                    = tr.appearanceSection;
+    document.getElementById('label-theme').textContent                           = tr.themeLabel;
     document.querySelector('label[for="disambiguation-toggle"]').textContent     = tr.disambigLabel;
     document.querySelector('label[for="warn-links-toggle"]').textContent         = tr.warnLinksLabel;
     document.getElementById('save-settings').textContent                         = tr.save;
@@ -569,6 +587,7 @@ function openSettingsModal() {
     document.getElementById('language-select').value         = currentLanguage;
     document.getElementById('disambiguation-toggle').checked = showDisambiguation;
     document.getElementById('warn-links-toggle').checked     = warnBeforeLinks;
+    document.getElementById('theme-select').value            = themePreference;
     switchSettingsTab('settings');
     document.getElementById('settings-modal').classList.remove('hidden');
 }
@@ -594,10 +613,13 @@ function saveSettings() {
     currentLanguage    = document.getElementById('language-select').value;
     showDisambiguation = document.getElementById('disambiguation-toggle').checked;
     warnBeforeLinks    = document.getElementById('warn-links-toggle').checked;
+    themePreference    = document.getElementById('theme-select').value;
     saveUILanguagePreference();
     saveLanguagePreference();
     saveDisambiguationPreference();
     saveWarnLinksPreference();
+    saveThemePreference();
+    applyTheme();
 
     if (prevUI !== uiLanguage) {
         updateUILanguage();
@@ -611,6 +633,10 @@ function resetLanguage() {
     document.getElementById('language-select').value         = DEFAULT_LANGUAGE;
     document.getElementById('disambiguation-toggle').checked = false;
     document.getElementById('warn-links-toggle').checked     = true;
+    document.getElementById('theme-select').value            = 'auto';
+    themePreference = 'auto';
+    saveThemePreference();
+    applyTheme();
 }
 
 document.getElementById('settings-btn').addEventListener('click', openSettingsModal);
@@ -1131,6 +1157,8 @@ function closeArticleViewer() {
 document.getElementById('article-close').addEventListener('click', closeArticleViewer);
 
 // ---- Init sequence ----
+loadThemePreference();
+applyTheme();
 if (window.location.protocol === 'file:') {
     document.getElementById('share-btn').style.display = 'none';
 }

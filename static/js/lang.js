@@ -60,6 +60,8 @@ const TRANSLATIONS = {
         downloadTooltip: 'Download spread',
         downloadFilenameLabel: 'Filename',
         warnLinksLabel: 'Warn when loading links',
+        appearanceSection: 'Appearance',
+        themeLabel: 'Theme:',
         defaultPositions: {
             one: 'The Answer',
             three: ['Past', 'Present', 'Future'],
@@ -123,6 +125,8 @@ const TRANSLATIONS = {
         downloadTooltip: 'Download spread',
         downloadFilenameLabel: 'Filename',
         warnLinksLabel: 'Warn when loading links',
+        appearanceSection: 'Appearance',
+        themeLabel: 'Theme:',
         defaultPositions: {
             one: 'The Answer',
             three: ['Past', 'Present', 'Future'],
@@ -186,6 +190,8 @@ const TRANSLATIONS = {
         downloadTooltip: 'Descargar tirada',
         downloadFilenameLabel: 'Nombre de archivo',
         warnLinksLabel: 'Avisar al cargar enlaces',
+        appearanceSection: 'Apariencia',
+        themeLabel: 'Tema:',
         defaultPositions: {
             one: 'La Respuesta',
             three: ['Pasado', 'Presente', 'Futuro'],
@@ -249,6 +255,8 @@ const TRANSLATIONS = {
         downloadTooltip: 'Legung herunterladen',
         downloadFilenameLabel: 'Dateiname',
         warnLinksLabel: 'Warnung beim Laden von Links',
+        appearanceSection: 'Erscheinungsbild',
+        themeLabel: 'Design:',
         defaultPositions: {
             one: 'Die Antwort',
             three: ['Vergangenheit', 'Gegenwart', 'Zukunft'],
@@ -312,6 +320,8 @@ const TRANSLATIONS = {
         downloadTooltip: 'Télécharger le tirage',
         downloadFilenameLabel: 'Nom de fichier',
         warnLinksLabel: 'Avertir lors du chargement des liens',
+        appearanceSection: 'Apparence',
+        themeLabel: 'Thème :',
         defaultPositions: {
             one: 'La Réponse',
             three: ['Passé', 'Présent', 'Futur'],
@@ -375,6 +385,8 @@ const TRANSLATIONS = {
         downloadTooltip: 'スプレッドをダウンロード',
         downloadFilenameLabel: 'ファイル名',
         warnLinksLabel: 'リンク読み込み時に警告する',
+        appearanceSection: '外観',
+        themeLabel: 'テーマ:',
         defaultPositions: {
             one: '答え',
             three: ['過去', '現在', '未来'],
@@ -427,6 +439,8 @@ const TRANSLATIONS = {
         downloadTooltip: 'Baixar tiragem',
         downloadFilenameLabel: 'Nome do arquivo',
         warnLinksLabel: 'Avisar ao carregar links',
+        appearanceSection: 'Aparência',
+        themeLabel: 'Tema:',
         defaultPositions: {
             one: 'A Resposta',
             three: ['Passado', 'Presente', 'Futuro'],

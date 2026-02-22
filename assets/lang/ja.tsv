@@ -44,6 +44,8 @@ downloadTitle	スプレッドをダウンロード
 downloadTooltip	スプレッドをダウンロード
 downloadFilenameLabel	ファイル名
 warnLinksLabel	リンク読み込み時に警告する
+appearanceSection	外観
+themeLabel	テーマ:
 defaultPositions__one	答え
 defaultPositions__three__0	過去
 defaultPositions__three__1	現在

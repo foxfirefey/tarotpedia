@@ -44,6 +44,8 @@ downloadTitle	Télécharger le tirage
 downloadTooltip	Télécharger le tirage
 downloadFilenameLabel	Nom de fichier
 warnLinksLabel	Avertir lors du chargement des liens
+appearanceSection	Apparence
+themeLabel	Thème :
 defaultPositions__one	La Réponse
 defaultPositions__three__0	Passé
 defaultPositions__three__1	Présent

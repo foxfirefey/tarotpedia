@@ -26,24 +26,95 @@ $decorative-font: 'Cinzel Decorative', Georgia, serif;
 $body-font:       Georgia, serif;
 
 // =============================================================================
+// CSS Custom Properties — themed values, toggled via [data-theme] attribute
+// =============================================================================
+
+:root {
+    --primary:             #e056a0;
+    --primary-rgb:         224, 86, 160;
+    --secondary:           #c0a0c0;
+    --text:                #e8e8e8;
+    --panel-bg:            #1a0a1a;
+    --deep-bg:             #2a1a2e;
+    --panel-gradient:      linear-gradient(145deg, #2a1a2e, #1a0a1a);
+    --card-front-gradient: linear-gradient(145deg, #1a0a1a, #0d050d);
+    --header-bg:           rgba(0, 0, 0, 0.6);
+    --input-bg:            rgba(0, 0, 0, 0.5);
+    --btn-text:            #0d050d;
+}
+
+@mixin light-theme {
+    --primary:             #7c4daf;
+    --primary-rgb:         124, 77, 175;
+    --secondary:           #9b7cb8;
+    --text:                #2d1b3d;
+    --panel-bg:            #ffffff;
+    --deep-bg:             #f0e4ff;
+    --panel-gradient:      linear-gradient(145deg, #f0e4ff, #faf4ff);
+    --card-front-gradient: linear-gradient(145deg, #ffffff, #faf4ff);
+    --header-bg:           rgba(255, 255, 255, 0.75);
+    --input-bg:            rgba(0, 0, 0, 0.05);
+    --btn-text:            #ffffff;
+}
+
+[data-theme="light"]                { @include light-theme; }
+@media (prefers-color-scheme: light) {
+    :root:not([data-theme])         { @include light-theme; }
+}
+
+// =============================================================================
 // Purely decorative rules — theme values only, no layout properties
 // =============================================================================
 
 body {
     font-family: $body-font;
     background: #000 $bg-image center center / cover no-repeat fixed;
-    color: $text-light;
+    color: var(--text);
+}
+
+/* Light-mode body: replace space image with soft gradient */
+[data-theme="light"] body {
+    background: linear-gradient(135deg, #fff0fa, #f0e4ff);
+}
+@media (prefers-color-scheme: light) {
+    :root:not([data-theme]) body {
+        background: linear-gradient(135deg, #fff0fa, #f0e4ff);
+    }
 }
 
 /* Dark overlay for readability */
 body::before {
     background: rgba(0, 0, 0, 0.5);
 }
+[data-theme="light"] body::before { background: none; }
+@media (prefers-color-scheme: light) {
+    :root:not([data-theme]) body::before { background: none; }
+}
+
+/* Light theme: update SVG dropdown arrows to match purple primary */
+[data-theme="light"] .spread-select {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%237c4daf' d='M6 9L1 4h10z'/%3E%3C/svg%3E"),
+                      var(--panel-gradient);
+}
+[data-theme="light"] .setting-row select {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%237c4daf' d='M6 9L1 4h10z'/%3E%3C/svg%3E");
+}
+@media (prefers-color-scheme: light) {
+    :root:not([data-theme]) .spread-select {
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%237c4daf' d='M6 9L1 4h10z'/%3E%3C/svg%3E"),
+                          var(--panel-gradient);
+    }
+    :root:not([data-theme]) .setting-row select {
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%237c4daf' d='M6 9L1 4h10z'/%3E%3C/svg%3E");
+    }
+}
 
 /* Card back diagonal stripe pattern */
 .card-back-design {
     background:
-        linear-gradient(45deg, transparent 48%, rgba($primary, 0.3) 49%, rgba($primary, 0.3) 51%, transparent 52%),
-        linear-gradient(-45deg, transparent 48%, rgba($primary, 0.3) 49%, rgba($primary, 0.3) 51%, transparent 52%);
+        linear-gradient(45deg, transparent 48%, rgba(var(--primary-rgb), 0.3) 49%,
+                        rgba(var(--primary-rgb), 0.3) 51%, transparent 52%),
+        linear-gradient(-45deg, transparent 48%, rgba(var(--primary-rgb), 0.3) 49%,
+                        rgba(var(--primary-rgb), 0.3) 51%, transparent 52%);
     background-size: 20px 20px;
 }

@@ -44,6 +44,8 @@ downloadTitle	Download Spread
 downloadTooltip	Download spread
 downloadFilenameLabel	Filename
 warnLinksLabel	Warn when loading links
+appearanceSection	Appearance
+themeLabel	Theme:
 defaultPositions__one	The Answer
 defaultPositions__three__0	Past
 defaultPositions__three__1	Present
