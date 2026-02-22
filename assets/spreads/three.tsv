@@ -1,0 +1,8 @@
+key	value
+id	three
+isDefault	true
+count	3
+layoutClass	three-card
+position__0__name	Past
+position__1__name	Present
+position__2__name	Future

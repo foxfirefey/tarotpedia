@@ -2,42 +2,6 @@
 
 const APP_VERSION = '7c60ee0';
 
-// Spread configurations — positions are { name } objects
-const SPREADS = {
-    one: {
-        id: 'one',
-        isDefault: true,
-        count: 1,
-        layoutClass: 'one-card',
-        positions: [{ name: 'The Answer' }]
-    },
-    three: {
-        id: 'three',
-        isDefault: true,
-        count: 3,
-        layoutClass: 'three-card',
-        positions: [{ name: 'Past' }, { name: 'Present' }, { name: 'Future' }]
-    },
-    celtic: {
-        id: 'celtic',
-        isDefault: true,
-        count: 10,
-        layoutClass: 'celtic-cross',
-        positions: [
-            { name: 'Present Situation' },
-            { name: 'The Challenge' },
-            { name: 'Crown (Conscious)' },
-            { name: 'Foundation (Unconscious)' },
-            { name: 'Past' },
-            { name: 'Future' },
-            { name: 'Self' },
-            { name: 'Environment' },
-            { name: 'Hopes & Fears' },
-            { name: 'Outcome' }
-        ]
-    }
-};
-
 // State
 let currentLanguage    = DEFAULT_LANGUAGE; // Wikipedia article language
 let uiLanguage         = DEFAULT_LANGUAGE; // Interface / position-name language

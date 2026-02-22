@@ -10,6 +10,7 @@ echo "🚀 Deploying with version: $VERSION"
 # Compile lang.js from TSV sources
 echo "🔧 Compiling lang.js..."
 python3 bin/compile_lang.py || { echo "❌ lang.js compilation failed"; exit 1; }
+python3 bin/compile_spreads.py || { echo "❌ spreads.js compilation failed"; exit 1; }
 
 # Compile SASS
 echo "🎨 Compiling SASS..."
@@ -21,6 +22,8 @@ if [ -f "index.html" ]; then
     sed -i '' "s/styles\.css?v=[^\"']*/styles.css?v=$VERSION/" index.html
     # Update lang.js version
     sed -i '' "s/lang\.js?v=[^\"']*/lang.js?v=$VERSION/" index.html
+    # Update spreads.js version
+    sed -i '' "s/spreads\.js?v=[^\"']*/lang.js?v=$VERSION/" index.html
     # Update app.js version
     sed -i '' "s/app\.js?v=[^\"']*/app.js?v=$VERSION/" index.html
     echo "✅ Updated index.html asset versions"
