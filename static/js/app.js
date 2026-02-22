@@ -251,6 +251,7 @@ function populateCardFront(card, article) {
     const mobileDomain = domain.replace('wikipedia.org', 'm.wikipedia.org');
     const articleUrl   = `https://${domain}/wiki/${encodeURIComponent(article.title)}`;
     const mobileUrl    = `https://${mobileDomain}/wiki/${encodeURIComponent(article.title)}`;
+    const positionName = card.querySelector('.card-position')?.textContent || '';
 
     card.querySelector('.card-title').textContent = article.title;
     const link = card.querySelector('.card-link');
@@ -259,7 +260,7 @@ function populateCardFront(card, article) {
     link.addEventListener('click', (e) => {
         e.preventDefault();
         e.stopPropagation();
-        openArticleViewer(article.title, mobileUrl, articleUrl);
+        openArticleViewer(positionName, article.title, mobileUrl, articleUrl);
     });
 }
 
@@ -367,7 +368,7 @@ function createCard(article, position, index) {
     card.querySelector('.card-link').addEventListener('click', (e) => {
         e.preventDefault();
         e.stopPropagation();
-        openArticleViewer(article.title, mobileUrl, articleUrl);
+        openArticleViewer(name, article.title, mobileUrl, articleUrl);
     });
     card.addEventListener('click', () => card.classList.add('revealed'));
     return card;
@@ -476,7 +477,7 @@ function renderTableView() {
         link.className = 'spread-table-link';
         link.addEventListener('click', (e) => {
             e.preventDefault();
-            openArticleViewer(article.title, mobileUrl, articleUrl);
+            openArticleViewer(position.name || position, article.title, mobileUrl, articleUrl);
         });
         articleCell.appendChild(link);
 
@@ -1197,10 +1198,11 @@ document.getElementById('reading-modal').addEventListener('click', e => {
 
 // ---- Article viewer ----
 
-function openArticleViewer(title, iframeUrl, externalUrl) {
-    document.getElementById('article-title').textContent = title;
-    document.getElementById('article-external').href    = externalUrl;
-    document.getElementById('article-iframe').src       = iframeUrl;
+function openArticleViewer(positionName, title, iframeUrl, externalUrl) {
+    document.getElementById('article-position').textContent   = positionName;
+    document.getElementById('article-title-text').textContent = title;
+    document.getElementById('article-external').href          = externalUrl;
+    document.getElementById('article-iframe').src             = iframeUrl;
     const viewer = document.getElementById('article-viewer');
     viewer.classList.remove('hidden');
     viewer.scrollIntoView({ behavior: 'smooth' });

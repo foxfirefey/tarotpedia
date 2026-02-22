@@ -1036,6 +1036,15 @@ main {
   margin-right: 1rem;
 }
 
+.article-position {
+  opacity: 0.65;
+  font-weight: normal;
+  margin-right: 0.25em;
+}
+.article-position:not(:empty)::after {
+  content: ": ";
+}
+
 .article-actions {
   display: flex;
   align-items: center;
