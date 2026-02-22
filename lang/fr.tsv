@@ -1,0 +1,60 @@
+key	value
+tagline	Divination par l'ésotérisme
+oneCard	Une Carte
+threeCard	Trois Cartes
+celticCross	Croix Celtique
+draw	Tirer
+settingsTitle	Paramètres
+languageSection	Langue
+interfaceLanguage	Interface :
+articleLanguage	Articles :
+articlesSection	Articles
+disambigLabel	Inclure les pages de désambiguïsation
+resetDefaults	Réinitialiser
+save	Enregistrer
+readArticle	Lire l'Article
+openInNewTab	Ouvrir dans un nouvel onglet
+close	Fermer
+footer	Parce que 78 cartes n'étaient pas suffisantes.
+settingsTooltip	Changer les noms de positions et les langues
+errorMessage	Les esprits de Wikipédia sont actuellement indisponibles.
+tryAgain	Veuillez réessayer.
+settingsTab	Paramètres
+spreadsTab	Tirages
+shareTooltip	Copier le lien
+linkCopied	Lien copié !
+editSpread	Modifier
+deleteSpread	Supprimer
+resetSpread	Réinitialiser
+addPosition	+ Ajouter une position
+spreadName	Nom du tirage
+positionName	Position
+row	Ligne
+col	Col
+readingBtnTooltip	Définir un sujet de lecture
+readingTitle	Votre sujet de lecture
+readingSave	Définir le sujet
+readingClear	Effacer
+sharedLinkTitle	Tirage partagé
+sharedLinkMessage	Quelqu'un vous a partagé un tirage. Voulez-vous le voir ?
+sharedLinkYes	Oui
+sharedLinkNo	Non
+sharedLinkNever	Ne plus avertir
+downloadTitle	Télécharger le tirage
+downloadTooltip	Télécharger le tirage
+downloadFilenameLabel	Nom de fichier
+warnLinksLabel	Avertir lors du chargement des liens
+defaultPositions__one	La Réponse
+defaultPositions__three__0	Passé
+defaultPositions__three__1	Présent
+defaultPositions__three__2	Futur
+defaultPositions__celtic__0	Situation Actuelle
+defaultPositions__celtic__1	Le Défi
+defaultPositions__celtic__2	Couronne (Conscient)
+defaultPositions__celtic__3	Fondation (Inconscient)
+defaultPositions__celtic__4	Passé
+defaultPositions__celtic__5	Futur
+defaultPositions__celtic__6	Soi
+defaultPositions__celtic__7	Environnement
+defaultPositions__celtic__8	Espoirs & Peurs
+defaultPositions__celtic__9	Résultat

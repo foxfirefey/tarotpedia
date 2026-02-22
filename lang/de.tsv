@@ -1,0 +1,60 @@
+key	value
+tagline	Wahrsagung durch Esoterik
+oneCard	Eine Karte
+threeCard	Drei Karten
+celticCross	Keltisches Kreuz
+draw	Ziehen
+settingsTitle	Einstellungen
+languageSection	Sprache
+interfaceLanguage	Oberfläche:
+articleLanguage	Artikel:
+articlesSection	Artikel
+disambigLabel	Begriffsklärungsseiten einschließen
+resetDefaults	Zurücksetzen
+save	Speichern
+readArticle	Artikel lesen
+openInNewTab	In neuem Tab öffnen
+close	Schließen
+footer	Weil 78 Karten nicht genug waren.
+settingsTooltip	Positionsnamen und Sprachen ändern
+errorMessage	Die Geister von Wikipedia sind derzeit nicht verfügbar.
+tryAgain	Bitte versuche es erneut.
+settingsTab	Einstellungen
+spreadsTab	Legungen
+shareTooltip	Link kopieren
+linkCopied	Link kopiert!
+editSpread	Bearbeiten
+deleteSpread	Löschen
+resetSpread	Zurücksetzen
+addPosition	+ Position hinzufügen
+spreadName	Name der Legung
+positionName	Position
+row	Zeile
+col	Spalte
+readingBtnTooltip	Lesethema festlegen
+readingTitle	Dein Lesethema
+readingSave	Thema speichern
+readingClear	Leeren
+sharedLinkTitle	Geteilte Legung
+sharedLinkMessage	Jemand hat eine Legung mit dir geteilt. Möchtest du sie sehen?
+sharedLinkYes	Ja
+sharedLinkNo	Nein
+sharedLinkNever	Nie warnen
+downloadTitle	Legung herunterladen
+downloadTooltip	Legung herunterladen
+downloadFilenameLabel	Dateiname
+warnLinksLabel	Warnung beim Laden von Links
+defaultPositions__one	Die Antwort
+defaultPositions__three__0	Vergangenheit
+defaultPositions__three__1	Gegenwart
+defaultPositions__three__2	Zukunft
+defaultPositions__celtic__0	Aktuelle Situation
+defaultPositions__celtic__1	Die Herausforderung
+defaultPositions__celtic__2	Krone (Bewusst)
+defaultPositions__celtic__3	Fundament (Unbewusst)
+defaultPositions__celtic__4	Vergangenheit
+defaultPositions__celtic__5	Zukunft
+defaultPositions__celtic__6	Selbst
+defaultPositions__celtic__7	Umgebung
+defaultPositions__celtic__8	Hoffnungen & Ängste
+defaultPositions__celtic__9	Ergebnis

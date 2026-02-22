@@ -1,0 +1,8 @@
+label	name	domain	default
+en	English	en.wikipedia.org	YES
+simple	Simple English	simple.wikipedia.org
+es	Spanish	es.wikipedia.org
+de	German	de.wikipedia.org
+fr	French	fr.wikipedia.org
+ja	Japanese	ja.wikipedia.org
+pt	Portuguese	pt.wikipedia.org

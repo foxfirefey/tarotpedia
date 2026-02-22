@@ -1,0 +1,60 @@
+key	value
+tagline	Adivinación a través del esoterismo
+oneCard	Una Carta
+threeCard	Tres Cartas
+celticCross	Cruz Céltica
+draw	Sacar
+settingsTitle	Configuración
+languageSection	Idioma
+interfaceLanguage	Interfaz:
+articleLanguage	Artículos:
+articlesSection	Artículos
+disambigLabel	Incluir páginas de desambiguación
+resetDefaults	Restablecer
+save	Guardar
+readArticle	Leer Artículo
+openInNewTab	Abrir en nueva pestaña
+close	Cerrar
+footer	Porque 78 cartas no eran suficientes.
+settingsTooltip	Cambiar nombres de posiciones e idiomas
+errorMessage	Los espíritus de Wikipedia no están disponibles.
+tryAgain	Por favor, inténtalo de nuevo.
+settingsTab	Ajustes
+spreadsTab	Tiradas
+shareTooltip	Copiar enlace
+linkCopied	¡Enlace copiado!
+editSpread	Editar
+deleteSpread	Eliminar
+resetSpread	Restablecer
+addPosition	+ Agregar posición
+spreadName	Nombre de la tirada
+positionName	Posición
+row	Fila
+col	Col
+readingBtnTooltip	Establecer un tema de lectura
+readingTitle	Tu tema de lectura
+readingSave	Guardar tema
+readingClear	Borrar
+sharedLinkTitle	Tirada compartida
+sharedLinkMessage	Alguien ha compartido una tirada contigo. ¿Quieres verla?
+sharedLinkYes	Sí
+sharedLinkNo	No
+sharedLinkNever	No volver a avisar
+downloadTitle	Descargar tirada
+downloadTooltip	Descargar tirada
+downloadFilenameLabel	Nombre de archivo
+warnLinksLabel	Avisar al cargar enlaces
+defaultPositions__one	La Respuesta
+defaultPositions__three__0	Pasado
+defaultPositions__three__1	Presente
+defaultPositions__three__2	Futuro
+defaultPositions__celtic__0	Situación Actual
+defaultPositions__celtic__1	El Desafío
+defaultPositions__celtic__2	Corona (Consciente)
+defaultPositions__celtic__3	Base (Inconsciente)
+defaultPositions__celtic__4	Pasado
+defaultPositions__celtic__5	Futuro
+defaultPositions__celtic__6	Yo
+defaultPositions__celtic__7	Entorno
+defaultPositions__celtic__8	Esperanzas y Miedos
+defaultPositions__celtic__9	Resultado

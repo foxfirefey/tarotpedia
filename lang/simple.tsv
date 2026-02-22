@@ -1,0 +1,60 @@
+key	value
+tagline	Divination through encyclopedia
+oneCard	One Card
+threeCard	Three Card
+celticCross	Celtic Cross
+draw	Draw
+settingsTitle	Settings
+languageSection	Language
+interfaceLanguage	Interface:
+articleLanguage	Articles:
+articlesSection	Articles
+disambigLabel	Include disambiguation pages
+resetDefaults	Reset
+save	Save
+readArticle	Read Article
+openInNewTab	Open in new tab
+close	Close
+footer	Because 78 cards wasn't enough.
+settingsTooltip	Change position names and languages
+errorMessage	Wikipedia is not working right now.
+tryAgain	Please try again.
+settingsTab	Settings
+spreadsTab	Spreads
+shareTooltip	Copy shareable link
+linkCopied	Link copied!
+editSpread	Edit
+deleteSpread	Delete
+resetSpread	Reset
+addPosition	+ Add Position
+spreadName	Spread Name
+positionName	Position
+row	Row
+col	Col
+readingBtnTooltip	Set a reading topic
+readingTitle	Your Reading Topic
+readingSave	Set Reading
+readingClear	Clear
+sharedLinkTitle	Shared Spread
+sharedLinkMessage	Someone shared a spread with you. Do you want to see it?
+sharedLinkYes	Yes
+sharedLinkNo	No
+sharedLinkNever	Never warn
+downloadTitle	Download Spread
+downloadTooltip	Download spread
+downloadFilenameLabel	Filename
+warnLinksLabel	Warn when loading links
+defaultPositions__one	The Answer
+defaultPositions__three__0	Past
+defaultPositions__three__1	Present
+defaultPositions__three__2	Future
+defaultPositions__celtic__0	Now
+defaultPositions__celtic__1	Problem
+defaultPositions__celtic__2	Thoughts
+defaultPositions__celtic__3	Feelings
+defaultPositions__celtic__4	Past
+defaultPositions__celtic__5	Future
+defaultPositions__celtic__6	You
+defaultPositions__celtic__7	Around You
+defaultPositions__celtic__8	Hopes & Fears
+defaultPositions__celtic__9	What Happens
