@@ -1,6 +1,6 @@
 // LANGUAGES, DEFAULT_LANGUAGE, TRANSLATIONS are defined in lang.js
 
-const APP_VERSION = '5da9937';
+const APP_VERSION = 'bcfc020';
 
 // Spread configurations — positions are { name } objects
 const SPREADS = {
@@ -42,6 +42,7 @@ const SPREADS = {
 let currentLanguage    = DEFAULT_LANGUAGE; // Wikipedia article language
 let uiLanguage         = DEFAULT_LANGUAGE; // Interface / position-name language
 let showDisambiguation = false;            // Whether to include disambiguation pages
+let warnBeforeLinks    = true;             // Whether to confirm before loading shared links
 let currentSpreadType  = null;
 let currentArticles    = null;
 let currentReading    = '';
@@ -110,6 +111,15 @@ function saveDisambiguationPreference() {
     localStorage.setItem('wikitarot-disambiguation', showDisambiguation);
 }
 
+function loadWarnLinksPreference() {
+    const saved = localStorage.getItem('wikitarot-warn-links');
+    warnBeforeLinks = saved === null ? true : saved === 'true';
+}
+
+function saveWarnLinksPreference() {
+    localStorage.setItem('wikitarot-warn-links', warnBeforeLinks);
+}
+
 function loadUserSpreads() {
     const saved = localStorage.getItem('wikitarot-spreads');
     if (saved) {
@@ -170,6 +180,7 @@ function updateUILanguage() {
     document.querySelector('label[for="language-select"]').textContent           = tr.articleLanguage;
     document.getElementById('section-articles').textContent                      = tr.articlesSection;
     document.querySelector('label[for="disambiguation-toggle"]').textContent     = tr.disambigLabel;
+    document.querySelector('label[for="warn-links-toggle"]').textContent         = tr.warnLinksLabel;
     document.getElementById('save-settings').textContent                         = tr.save;
     document.getElementById('reset-language').textContent                        = tr.resetDefaults;
     document.getElementById('settings-btn').title                                = tr.settingsTooltip;
@@ -557,6 +568,7 @@ function openSettingsModal() {
     document.getElementById('ui-language-select').value      = uiLanguage;
     document.getElementById('language-select').value         = currentLanguage;
     document.getElementById('disambiguation-toggle').checked = showDisambiguation;
+    document.getElementById('warn-links-toggle').checked     = warnBeforeLinks;
     switchSettingsTab('settings');
     document.getElementById('settings-modal').classList.remove('hidden');
 }
@@ -581,9 +593,11 @@ function saveSettings() {
     uiLanguage         = document.getElementById('ui-language-select').value;
     currentLanguage    = document.getElementById('language-select').value;
     showDisambiguation = document.getElementById('disambiguation-toggle').checked;
+    warnBeforeLinks    = document.getElementById('warn-links-toggle').checked;
     saveUILanguagePreference();
     saveLanguagePreference();
     saveDisambiguationPreference();
+    saveWarnLinksPreference();
 
     if (prevUI !== uiLanguage) {
         updateUILanguage();
@@ -596,6 +610,7 @@ function resetLanguage() {
     document.getElementById('ui-language-select').value      = DEFAULT_LANGUAGE;
     document.getElementById('language-select').value         = DEFAULT_LANGUAGE;
     document.getElementById('disambiguation-toggle').checked = false;
+    document.getElementById('warn-links-toggle').checked     = true;
 }
 
 document.getElementById('settings-btn').addEventListener('click', openSettingsModal);
@@ -985,19 +1000,7 @@ function checkURLParams() {
     const articles = articlesParam.split('|').map(title => ({ title }));
     if (articles.length !== count) return;
 
-    // Show confirmation modal in the user's current UI language
-    const tr = t();
-    document.getElementById('share-confirm-title').textContent   = tr.sharedLinkTitle;
-    document.getElementById('share-confirm-message').textContent = tr.sharedLinkMessage;
-    document.getElementById('share-confirm-yes').textContent     = tr.sharedLinkYes;
-    document.getElementById('share-confirm-no').textContent      = tr.sharedLinkNo;
-
-    const modal = document.getElementById('share-confirm-modal');
-    modal.classList.remove('hidden');
-
-    document.getElementById('share-confirm-yes').onclick = () => {
-        modal.classList.add('hidden');
-
+    function applySharedSpread() {
         if (lang && LANGUAGES[lang])  { currentLanguage = lang; saveLanguagePreference(); }
         if (ui   && TRANSLATIONS[ui]) { uiLanguage = ui;        saveUILanguagePreference(); }
         if (lang || ui)               updateUILanguage();
@@ -1016,11 +1019,40 @@ function checkURLParams() {
 
         renderSpreadRevealed(spreadId, articles);
         history.replaceState(null, '', window.location.pathname);
+    }
+
+    if (!warnBeforeLinks) {
+        applySharedSpread();
+        return;
+    }
+
+    // Show confirmation modal in the user's current UI language
+    const tr = t();
+    document.getElementById('share-confirm-title').textContent   = tr.sharedLinkTitle;
+    document.getElementById('share-confirm-message').textContent = tr.sharedLinkMessage;
+    document.getElementById('share-confirm-yes').textContent     = tr.sharedLinkYes;
+    document.getElementById('share-confirm-no').textContent      = tr.sharedLinkNo;
+    document.getElementById('share-confirm-never').textContent   = tr.sharedLinkNever;
+
+    const modal = document.getElementById('share-confirm-modal');
+    modal.classList.remove('hidden');
+
+    document.getElementById('share-confirm-yes').onclick = () => {
+        modal.classList.add('hidden');
+        applySharedSpread();
     };
 
     document.getElementById('share-confirm-no').onclick = () => {
         modal.classList.add('hidden');
         history.replaceState(null, '', window.location.pathname);
+    };
+
+    document.getElementById('share-confirm-never').onclick = () => {
+        modal.classList.add('hidden');
+        warnBeforeLinks = false;
+        saveWarnLinksPreference();
+        document.getElementById('warn-links-toggle').checked = false;
+        applySharedSpread();
     };
 }
 
@@ -1097,6 +1129,7 @@ if (window.location.protocol === 'file:') {
 loadLanguagePreference();
 loadUILanguagePreference();
 loadDisambiguationPreference();
+loadWarnLinksPreference();
 loadUserSpreads();
 migrateAndLoadPositions();
 updateUILanguage();
