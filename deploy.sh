@@ -23,7 +23,7 @@ if [ -f "index.html" ]; then
     # Update lang.js version
     sed -i '' "s/lang\.js?v=[^\"']*/lang.js?v=$VERSION/" index.html
     # Update spreads.js version
-    sed -i '' "s/spreads\.js?v=[^\"']*/lang.js?v=$VERSION/" index.html
+    sed -i '' "s/spreads\.js?v=[^\"']*/spreads.js?v=$VERSION/" index.html
     # Update app.js version
     sed -i '' "s/app\.js?v=[^\"']*/app.js?v=$VERSION/" index.html
     echo "✅ Updated index.html asset versions"
@@ -36,7 +36,7 @@ if [ -f "js/app.js" ]; then
 fi
 
 # Stage the updated files
-git add index.html static/js/app.js static/js/lang.js
+git add index.html static/js/app.js static/js/lang.js static/js/spreads.js
 
 echo "✨ Version update complete!"
 echo ""
