@@ -36,7 +36,11 @@ if [ -f "js/app.js" ]; then
 fi
 
 # Stage the updated files
-git add index.html static/js/app.js static/js/lang.js static/js/spreads.js
+git add index.html \
+ static/js/app.js \
+ static/js/lang.js \
+ static/css/styles.css \
+ static/css/styles.css.map
 
 echo "✨ Version update complete!"
 echo ""

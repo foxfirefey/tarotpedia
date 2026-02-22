@@ -13,6 +13,7 @@ let currentReading    = '';
 let userSpreads        = [];
 let fetchPromise       = null;             // Shared fetch promise; null means not yet started
 let themePreference    = 'auto';
+let tableViewActive    = false;
 
 // ---- Utility ----
 
@@ -270,6 +271,7 @@ function checkAllRevealed() {
     document.getElementById('draw-btn').classList.remove('loading');
     document.getElementById('share-btn').disabled = false;
     document.getElementById('download-btn').disabled = false;
+    document.getElementById('table-view-btn').disabled = false;
 }
 
 // Click handler attached to each undrawn card.
@@ -427,6 +429,88 @@ function renderSpreadRevealed(id, articles) {
     });
     document.getElementById('share-btn').disabled = false;
     document.getElementById('download-btn').disabled = false;
+    document.getElementById('table-view-btn').disabled = false;
+}
+
+function renderTableView() {
+    const spread = getSpreadById(currentSpreadType);
+    if (!spread || !currentArticles) return;
+
+    const domain       = LANGUAGES[currentLanguage].domain;
+    const mobileDomain = domain.replace('wikipedia.org', 'm.wikipedia.org');
+    const container    = document.getElementById('spread-table');
+
+    const table = document.createElement('table');
+    table.className = 'spread-table-el';
+
+    const thead = document.createElement('thead');
+    const headerRow = document.createElement('tr');
+    ['#', 'Position', 'Article'].forEach(text => {
+        const th = document.createElement('th');
+        th.textContent = text;
+        headerRow.appendChild(th);
+    });
+    thead.appendChild(headerRow);
+    table.appendChild(thead);
+
+    const tbody = document.createElement('tbody');
+    spread.positions.forEach((position, index) => {
+        const article = currentArticles[index];
+        if (!article) return;
+
+        const articleUrl = `https://${domain}/wiki/${encodeURIComponent(article.title)}`;
+        const mobileUrl  = `https://${mobileDomain}/wiki/${encodeURIComponent(article.title)}`;
+
+        const row = document.createElement('tr');
+
+        const numCell = document.createElement('td');
+        numCell.textContent = index + 1;
+
+        const posCell = document.createElement('td');
+        posCell.textContent = position.name || position;
+
+        const articleCell = document.createElement('td');
+        const link = document.createElement('a');
+        link.textContent = article.title;
+        link.href = articleUrl;
+        link.className = 'spread-table-link';
+        link.addEventListener('click', (e) => {
+            e.preventDefault();
+            openArticleViewer(article.title, mobileUrl, articleUrl);
+        });
+        articleCell.appendChild(link);
+
+        row.appendChild(numCell);
+        row.appendChild(posCell);
+        row.appendChild(articleCell);
+        tbody.appendChild(row);
+    });
+
+    table.appendChild(tbody);
+    container.innerHTML = '';
+    container.appendChild(table);
+}
+
+function setTableView(active) {
+    tableViewActive = active;
+    const cardDisplay = document.getElementById('card-display');
+    const container   = document.getElementById('spread-table');
+    const btn         = document.getElementById('table-view-btn');
+
+    if (active) {
+        renderTableView();
+        cardDisplay.classList.add('hidden');
+        container.classList.remove('hidden');
+        document.getElementById('icon-table-view').classList.add('hidden');
+        document.getElementById('icon-card-view').classList.remove('hidden');
+        btn.title = 'Switch to card view';
+    } else {
+        cardDisplay.classList.remove('hidden');
+        container.classList.add('hidden');
+        document.getElementById('icon-table-view').classList.remove('hidden');
+        document.getElementById('icon-card-view').classList.add('hidden');
+        btn.title = 'Switch to table view';
+    }
 }
 
 function showError(message) {
@@ -469,6 +553,8 @@ function handleSpreadSelection(spreadId) {
     saveLastSpread(spreadId);
     document.getElementById('share-btn').disabled = true;
     document.getElementById('download-btn').disabled = true;
+    document.getElementById('table-view-btn').disabled = true;
+    if (tableViewActive) setTableView(false);
 
     const viewer = document.getElementById('article-viewer');
     if (viewer) {
@@ -490,10 +576,11 @@ async function handleDraw() {
     const spread = getSpreadById(currentSpreadType);
     if (!spread) return;
 
-    const drawBtn     = document.getElementById('draw-btn');
-    const shareBtn    = document.getElementById('share-btn');
-    const downloadBtn = document.getElementById('download-btn');
-    const cardDisplay = document.getElementById('card-display');
+    const drawBtn      = document.getElementById('draw-btn');
+    const shareBtn     = document.getElementById('share-btn');
+    const downloadBtn  = document.getElementById('download-btn');
+    const tableViewBtn = document.getElementById('table-view-btn');
+    const cardDisplay  = document.getElementById('card-display');
 
     // If every card is already revealed, reset and start a brand-new draw.
     const existingCards = [...cardDisplay.querySelectorAll('.tarot-card')];
@@ -501,12 +588,15 @@ async function handleDraw() {
         resetFetch();
         shareBtn.disabled = true;
         downloadBtn.disabled = true;
+        tableViewBtn.disabled = true;
+        if (tableViewActive) setTableView(false);
         renderUndrawnSpread(currentSpreadType);
     }
 
     drawBtn.classList.add('loading');
     shareBtn.disabled = true;
     downloadBtn.disabled = true;
+    tableViewBtn.disabled = true;
 
     try {
         const articles = await startFetch();
@@ -518,6 +608,7 @@ async function handleDraw() {
             drawBtn.classList.remove('loading');
             shareBtn.disabled = false;
             downloadBtn.disabled = false;
+            tableViewBtn.disabled = false;
             return;
         }
 
@@ -531,6 +622,7 @@ async function handleDraw() {
                     drawBtn.classList.remove('loading');
                     shareBtn.disabled = false;
                     downloadBtn.disabled = false;
+                    tableViewBtn.disabled = false;
                 }
             }, i * 300);
         });
@@ -543,6 +635,7 @@ async function handleDraw() {
 }
 
 document.getElementById('draw-btn').addEventListener('click', handleDraw);
+document.getElementById('table-view-btn').addEventListener('click', () => setTableView(!tableViewActive));
 
 // ---- Settings modal ----
 
